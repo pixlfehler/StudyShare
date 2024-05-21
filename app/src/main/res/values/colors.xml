@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#FFFFFFFF</color>
+    <color name="secondary">#E6EDFE</color>
+    <color name="secondary_2">#F0E7FF</color>
+    <color name="light_grey">#BFBFBF</color>
+    <color name="shadow_grey">#787878</color>
+    <color name="dark_purple">#A280FF</color>
+
+    //Fächerfarben
+    <color name="biology_green">#86D66F</color>
+</resources>
