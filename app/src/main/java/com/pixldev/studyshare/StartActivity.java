@@ -28,7 +28,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         LottieAnimationView animationView = findViewById(R.id.lottieAnimationView);
-        animationView.setImageAssetsFolder("images");
 
         loginButton=findViewById(R.id.loginButton);
         registrateButton=findViewById(R.id.registrateButton);
