@@ -27,7 +27,6 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        LottieAnimationView animationView = findViewById(R.id.lottieAnimationView);
 
         loginButton=findViewById(R.id.loginButton);
         registrateButton=findViewById(R.id.registrateButton);
