@@ -33,9 +33,9 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
     public void onBindViewHolder(@NonNull Dokumenteadapter.ViewHolder holder, int position) {
         // Daten an die Views im ViewHolder binden.
         Dokumentmodel model = dokumentModelArrayList.get(position);
-        holder.titleDokumentTV.setText(model.getDokumentName());
-        holder.dokumentRatingTV.setText(String.valueOf(model.getDokumentRating()));
-        holder.dokumentIV.setImageResource(model.getDokumentImage());
+        holder.titleDokumentTV.setText(model.getdokument_name());
+        holder.dokumentfachTV.setText(String.valueOf(model.getdokument_fach()));
+        holder.dokumentIV.setImageResource(model.getdokument_image());
     }
 
     @Override
@@ -48,13 +48,13 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView dokumentIV;
         private final TextView titleDokumentTV;
-        private final TextView dokumentRatingTV;
+        private final TextView dokumentfachTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dokumentIV = itemView.findViewById(R.id.idIVDokumentImage);
+            dokumentIV = itemView.findViewById(R.id.image_cardview);
             titleDokumentTV = itemView.findViewById(R.id.title_dokument_pl);
-            dokumentRatingTV = itemView.findViewById(R.id.idTVDokumentRating);
+            dokumentfachTV = itemView.findViewById(R.id.Fach);
         }
     }
 }

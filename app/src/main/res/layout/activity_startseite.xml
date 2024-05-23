@@ -36,7 +36,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/idRVCourse"
+        android:id="@+id/RVdokument"
         android:layout_width="412dp"
         android:layout_height="554dp"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
