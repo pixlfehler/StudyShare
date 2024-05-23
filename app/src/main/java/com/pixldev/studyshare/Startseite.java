@@ -48,35 +48,4 @@ public class Startseite extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
     }
-    public class MainActivity extends AppCompatActivity {
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_startseite);
-            RecyclerView courseRV = findViewById(R.id.RVdokument);
-
-            // Here, we have created new array list and added data to it
-            ArrayList<Dokumentmodel> dokumentmodelArrayList = new ArrayList<Dokumentmodel>();
-            dokumentmodelArrayList.add(new Dokumentmodel("DSA in Java", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("Java Course", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("C++ Course", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("DSA in C++", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("Kotlin for Android", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("Java for Android", "Bio", R.drawable.logo_placeholder));
-            dokumentmodelArrayList.add(new Dokumentmodel("HTML and CSS", "Bio", R.drawable.logo_placeholder));
-
-            // we are initializing our adapter class and passing our arraylist to it.
-            Dokumenteadapter courseAdapter = new Dokumenteadapter(this, dokumentmodelArrayList);
-
-            // below line is for setting a layout manager for our recycler view.
-            // here we are creating vertical list so we will provide orientation as vertical
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-            // in below two lines we are setting layoutmanager and adapter to our recycler view.
-            courseRV.setLayoutManager(linearLayoutManager);
-            courseRV.setAdapter(courseAdapter);
-        }
-    }
-
 }
