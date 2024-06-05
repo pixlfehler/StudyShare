@@ -53,7 +53,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.image_cardview);
-            titleDokumentTV = itemView.findViewById(R.id.title_dokument_pl);
+            titleDokumentTV = itemView.findViewById(R.id.author_pl);
             dokumentfachTV = itemView.findViewById(R.id.Fach);
         }
     }

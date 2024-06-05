@@ -3,12 +3,27 @@ package com.pixldev.studyshare.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.pixldev.studyshare.Dokumenteadapter;
+import com.pixldev.studyshare.Dokumentmodel;
+import com.pixldev.studyshare.KommentarAdapter;
+import com.pixldev.studyshare.KommentarModel;
 import com.pixldev.studyshare.R;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +76,42 @@ public class detailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        View view= inflater.inflate(R.layout.fragment_detail, container, false);
+
+        Button commentButton=view.findViewById(R.id.commentButton);
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+                View view1 = LayoutInflater.from(getContext()).inflate(R.layout.comment_bottom_sheet, null);
+                bottomSheetDialog.setContentView(view1);
+                bottomSheetDialog.show();
+
+                RecyclerView commentRV = view1.findViewById(R.id.commentRV);
+
+                // Here, we have created new array list and added data to it
+                ArrayList<KommentarModel> commentArrayList = new ArrayList<KommentarModel>();
+                commentArrayList.add(new KommentarModel("pixlfehler","Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll!",1));
+                commentArrayList.add(new KommentarModel("jappez","Super!",4));
+                commentArrayList.add(new KommentarModel("AnonymerNutzer123","yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyo"));
+                commentArrayList.add(new KommentarModel("Bot77","Ich mags!",5));
+                commentArrayList.add(new KommentarModel("Boris Meltzow","Diese Kommentare sind ja so cool!👁️👁️",4));
+
+                // we are initializing our adapter class and passing our arraylist to it.
+                KommentarAdapter commentAdapter = new KommentarAdapter(getContext(), commentArrayList);
+
+                // below line is for setting a layout manager for our recycler view.
+                // here we are creating vertical list so we will provide orientation as vertical
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+
+                // in below two lines we are setting layoutmanager and adapter to our recycler view.
+                commentRV.setLayoutManager(linearLayoutManager);
+                commentRV.setAdapter(commentAdapter);
+
+            }
+        });
+
+
+        return view;
     }
 }

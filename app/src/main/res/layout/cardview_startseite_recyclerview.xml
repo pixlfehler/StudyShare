@@ -9,7 +9,8 @@
     app:cardElevation="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="false"
+    android:layout_margin="10dp">
 
     <!-- In the above cardview widget cardelevation property will give elevation to your card view
         card corner radius will provide radius to your card view card background color will give
@@ -36,7 +37,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/title_dokument_pl"
+            android:id="@+id/author_pl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -56,8 +57,8 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Biologie"
-            app:layout_constraintStart_toStartOf="@+id/title_dokument_pl"
-            app:layout_constraintTop_toBottomOf="@+id/title_dokument_pl" />
+            app:layout_constraintStart_toStartOf="@+id/author_pl"
+            app:layout_constraintTop_toBottomOf="@+id/author_pl" />
 
         <TextView
             android:id="@+id/Typ"
@@ -68,7 +69,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Übungsaufgabe"
-            app:layout_constraintStart_toStartOf="@+id/title_dokument_pl"
+            app:layout_constraintStart_toStartOf="@+id/author_pl"
             app:layout_constraintTop_toBottomOf="@+id/Fach" />
 
         <TextView
@@ -80,7 +81,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Q1"
-            app:layout_constraintStart_toStartOf="@+id/title_dokument_pl"
+            app:layout_constraintStart_toStartOf="@+id/author_pl"
             app:layout_constraintTop_toBottomOf="@+id/Typ" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
