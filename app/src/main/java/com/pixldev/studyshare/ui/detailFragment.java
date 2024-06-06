@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -40,6 +42,8 @@ public class detailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public ArrayList<KommentarModel> commentArrayList;
 
     public detailFragment() {
         // Required empty public constructor
@@ -79,6 +83,28 @@ public class detailFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_detail, container, false);
 
         Button commentButton=view.findViewById(R.id.commentButton);
+
+        commentArrayList = new ArrayList<KommentarModel>();
+
+        TextView docTitle=view.findViewById(R.id.DocumentTitle);
+        TextView docFach=view.findViewById(R.id.Fach);
+        TextView docTyp=view.findViewById(R.id.Typ);
+        TextView docStufe=view.findViewById(R.id.Stufe);
+
+        ImageView thumbnailIV=view.findViewById(R.id.thumbnailIV);
+
+        if(getArguments()!=null) {
+            docTitle.setText(getArguments().getString("title"));
+            docFach.setText(getArguments().getString("fach"));
+            docTyp.setText(getArguments().getString("typ"));
+            docStufe.setText(getArguments().getString("stufe"));
+
+            thumbnailIV.setImageResource(getArguments().getInt("image"));
+
+            commentArrayList=getArguments().getParcelableArrayList("comments");
+        }
+
+
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +116,8 @@ public class detailFragment extends Fragment {
                 RecyclerView commentRV = view1.findViewById(R.id.commentRV);
 
                 // Here, we have created new array list and added data to it
-                ArrayList<KommentarModel> commentArrayList = new ArrayList<KommentarModel>();
+
+
                 commentArrayList.add(new KommentarModel("pixlfehler","Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll!",1));
                 commentArrayList.add(new KommentarModel("jappez","Super!",4));
                 commentArrayList.add(new KommentarModel("AnonymerNutzer123","yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyo"));

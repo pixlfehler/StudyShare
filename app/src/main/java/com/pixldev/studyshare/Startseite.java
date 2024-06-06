@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,12 +50,5 @@ public class Startseite extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         Log.d("Startseite", "naccontroller erstellt");
         NavigationUI.setupWithNavController(navView, navController);
-
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, new detailFragment());
-        fragmentTransaction.addToBackStack(null); // optional: um den Fragment-Wechsel rückgängig machen zu können
-        fragmentTransaction.commit();
     }
 }

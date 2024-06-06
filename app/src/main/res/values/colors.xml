@@ -12,4 +12,7 @@
 
     //Fächerfarben
     <color name="biology_green">#86D66F</color>
+    
+    //Stufenfarben
+    <color name="higher_classes_yellow">#FFD500</color>
 </resources>

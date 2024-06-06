@@ -1,13 +1,24 @@
 package com.pixldev.studyshare;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.pixldev.studyshare.ui.detailFragment;
+
 import java.util.ArrayList;
 
 public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.ViewHolder> {
@@ -34,8 +45,34 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         // Daten an die Views im ViewHolder binden.
         Dokumentmodel model = dokumentModelArrayList.get(position);
         holder.titleDokumentTV.setText(model.getdokument_name());
-        holder.dokumentfachTV.setText(String.valueOf(model.getdokument_fach()));
+        holder.dokumentfachTV.setText(model.getdokument_fach());
+        holder.dokumenttypTV.setText(model.getDokument_typ());
+        holder.dokumentstufeTV.setText(model.getDokument_klasse());
         holder.dokumentIV.setImageResource(model.getdokument_image());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment=new detailFragment();
+
+                Bundle args=new Bundle();
+                args.putString("title",model.getdokument_name());
+                args.putString("fach",model.getdokument_fach());
+                args.putString("typ",model.getDokument_typ());
+                args.putString("stufe", model.getDokument_klasse());
+                args.putInt("image",model.getdokument_image());
+                args.putParcelableArrayList("comments",model.getComments());
+
+                newFragment.setArguments(args);
+
+                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, newFragment);
+                fragmentTransaction.addToBackStack(null); // optional: um den Fragment-Wechsel rückgängig machen zu können
+
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
@@ -49,12 +86,16 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         private final ImageView dokumentIV;
         private final TextView titleDokumentTV;
         private final TextView dokumentfachTV;
+        private final TextView dokumenttypTV;
+        private final TextView dokumentstufeTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.image_cardview);
             titleDokumentTV = itemView.findViewById(R.id.author_pl);
             dokumentfachTV = itemView.findViewById(R.id.Fach);
+            dokumenttypTV = itemView.findViewById(R.id.Typ);
+            dokumentstufeTV = itemView.findViewById(R.id.Stufe);
         }
     }
 }
