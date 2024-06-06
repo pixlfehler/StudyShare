@@ -19,7 +19,7 @@
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-black"
         android:text="Kommentare"
-        android:textColor="@color/black"
+        android:textColor="@color/primary_contrast"
         android:textSize="20sp"
         android:gravity="center"/>
 
@@ -32,7 +32,7 @@
         android:id="@+id/commentRV"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:background="@color/white" />
+        android:background="@color/primary" />
 
     <View
         android:layout_width="match_parent"

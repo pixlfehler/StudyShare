@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="primary">#FFFFFFFF</color>
-    <color name="primary_contrast">#000000</color>
+    <color name="primary">#3A3A3A</color>
+    <color name="primary_contrast">#FFFFFF</color>
     <color name="secondary">#E6EDFE</color>
     <color name="secondary_2">#F0E7FF</color>
     <color name="light_grey">#BFBFBF</color>
@@ -13,7 +13,7 @@
 
     //Fächerfarben
     <color name="biology_green">#86D66F</color>
-    
+
     //Stufenfarben
     <color name="higher_classes_yellow">#FFD500</color>
 </resources>
