@@ -2,6 +2,8 @@ package com.pixldev.studyshare.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.pixldev.studyshare.Dokumenteadapter;
 import com.pixldev.studyshare.Dokumentmodel;
@@ -53,13 +56,14 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    private TextView textView7;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
+    @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -89,6 +93,23 @@ public class HomeFragment extends Fragment {
         courseRV.setLayoutManager(linearLayoutManager);
         courseRV.setAdapter(courseAdapter);
 
+        View view2 = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // Find the TextView in the inflated layout
+        textView7 = view2.findViewById(R.id.textView7);
+
+        // You can set initial text here if needed
+        // textView7.setText("Initial Text 🪙");
+
         return view;
     }
+    public void setTextViewText(String newText) {
+            textView7.setText(newText);
+        }
+
+
+        // Inflate the layout for this fragment
+
+
+
 }
