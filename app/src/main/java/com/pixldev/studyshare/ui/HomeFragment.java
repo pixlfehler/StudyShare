@@ -2,7 +2,6 @@ package com.pixldev.studyshare.ui;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.ProgressBar;
 import com.pixldev.studyshare.Dokumenteadapter;
 import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
+
+
+
 
 import java.util.ArrayList;
 
@@ -25,7 +27,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
+    private TextView textView7;
+    private ProgressBar progressBar; // Hier deklarieren
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -56,7 +59,6 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    private TextView textView7;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,24 +94,19 @@ public class HomeFragment extends Fragment {
         // in below two lines we are setting layoutmanager and adapter to our recycler view.
         courseRV.setLayoutManager(linearLayoutManager);
         courseRV.setAdapter(courseAdapter);
-
-        View view2 = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // Find the TextView in the inflated layout
-        textView7 = view2.findViewById(R.id.textView7);
-
-        // You can set initial text here if needed
-        // textView7.setText("Initial Text 🪙");
-
+        progressBar = view.findViewById(R.id.progressBar);
+        textView7 = view.findViewById(R.id.textView7);
         return view;
     }
-    public void setTextViewText(String newText) {
-            textView7.setText(newText);
+    public void setProgresscoin(int coin) {
+            textView7.setText(coin);
+
+            int coinCount = coin;//Muss noch in ahängigkeit vom server geschehen
+            progressBar.setProgress(coinCount * 100 / 7000);
         }
 
+    }
+    // Inflate the layout for this fragment
 
-        // Inflate the layout for this fragment
 
 
-
-}
