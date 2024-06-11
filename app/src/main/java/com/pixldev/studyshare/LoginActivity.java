@@ -1,7 +1,11 @@
 package com.pixldev.studyshare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +20,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button loginConfirmButton=findViewById(R.id.loginConfirmButton);
+        Button loginConfirmButton=findViewById(R.id.registrateConfirmButton);
+
+        CardView myCV=findViewById(R.id.cardview);
 
         loginConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override

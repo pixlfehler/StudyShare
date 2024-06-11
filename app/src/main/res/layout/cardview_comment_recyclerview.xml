@@ -9,8 +9,7 @@
     app:cardElevation="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="false"
-    android:layout_margin="10dp">
+    app:cardUseCompatPadding="true">
 
     <!-- In the above cardview widget cardelevation property will give elevation to your card view
         card corner radius will provide radius to your card view card background color will give
@@ -37,13 +36,12 @@
             app:layout_constraintBottom_toTopOf="@id/trennlinie"
             android:textColor="@color/primary_contrast"/>
 
-        <LinearLayout
+        <View
             android:id="@+id/trennlinie"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/light_grey"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/author_pl" />
+            app:layout_constraintTop_toBottomOf="@id/author_pl"/>
 
             <TextView
                 android:id="@+id/content_pl"

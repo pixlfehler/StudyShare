@@ -20,6 +20,9 @@
         android:theme="@style/Theme.StudyShare"
         tools:targetApi="31">
         <activity
+            android:name=".SubjectSelectActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartActivity"
             android:exported="true"
             android:enableOnBackInvokedCallback="true"

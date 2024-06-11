@@ -1,8 +1,8 @@
 package com.pixldev.studyshare.ui;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,13 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.ProgressBar;
+
 import com.pixldev.studyshare.Dokumenteadapter;
 import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
-
-
-
 
 import java.util.ArrayList;
 
@@ -27,8 +24,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    private TextView textView7;
-    private ProgressBar progressBar; // Hier deklarieren
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,13 +55,13 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -75,13 +71,13 @@ public class HomeFragment extends Fragment {
 
         // Here, we have created new array list and added data to it
         ArrayList<Dokumentmodel> dokumentmodelArrayList = new ArrayList<Dokumentmodel>();
-        dokumentmodelArrayList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel","EF", R.drawable.document_placeholder,true));
-        dokumentmodelArrayList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe","7", R.drawable.document_placeholder,false));
-        dokumentmodelArrayList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder,false));
-        dokumentmodelArrayList.add(new Dokumentmodel("Mathematik Übungsaufgaben", "Mathematik", "Übungsaufgabe", "Q1", R.drawable.document_placeholder,false));
-        dokumentmodelArrayList.add(new Dokumentmodel("Geschichtsreferat über Mittelalter", "Geschichte", "Referat", "Q2", R.drawable.document_placeholder,false));
-        dokumentmodelArrayList.add(new Dokumentmodel("Chemie Laborbericht", "Chemie", "Laborbericht", "EF", R.drawable.document_placeholder,false));
-        dokumentmodelArrayList.add(new Dokumentmodel("Englisch Essay zu Shakespeare", "Englisch", "Essay", "Q1", R.drawable.document_placeholder,false));
+        dokumentmodelArrayList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel","EF", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe","7", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Mathematik Übungsaufgaben", "Mathematik", "Übungsaufgabe", "Q1", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Geschichtsreferat über Mittelalter", "Geschichte", "Referat", "Q2", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Chemie Laborbericht", "Chemie", "Laborbericht", "EF", R.drawable.document_placeholder));
+        dokumentmodelArrayList.add(new Dokumentmodel("Englisch Essay zu Shakespeare", "Englisch", "Essay", "Q1", R.drawable.document_placeholder));
 
 
         // we are initializing our adapter class and passing our arraylist to it.
@@ -94,19 +90,21 @@ public class HomeFragment extends Fragment {
         // in below two lines we are setting layoutmanager and adapter to our recycler view.
         courseRV.setLayoutManager(linearLayoutManager);
         courseRV.setAdapter(courseAdapter);
-        progressBar = view.findViewById(R.id.progressBar);
-        textView7 = view.findViewById(R.id.textView7);
+
+        showConfirmTransactionDialog();
+
         return view;
     }
-    public void setProgresscoin(int coin) {
-            textView7.setText(coin);
 
-            int coinCount = coin;//Muss noch in ahängigkeit vom server geschehen
-            progressBar.setProgress(coinCount * 100 / 7000);
-        }
+    public void showConfirmTransactionDialog(){
+        Dialog dialog= new Dialog(getContext());
 
+        dialog.setContentView(R.layout.yes_no_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        TextView heading=dialog.findViewById(R.id.heading);
+        heading.setText("Test");
+
+        dialog.show();
     }
-    // Inflate the layout for this fragment
-
-
-
+}

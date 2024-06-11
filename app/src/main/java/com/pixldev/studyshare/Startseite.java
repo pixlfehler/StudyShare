@@ -1,5 +1,6 @@
 package com.pixldev.studyshare;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 
