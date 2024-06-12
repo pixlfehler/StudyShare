@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:text="Logge dich mit einem bestehenden Account ein."
+                android:text="@string/logge_dich_mit_einem_bestehenden_account_ein"
                 android:textColor="@color/light_grey" />
 
             <View

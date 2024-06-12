@@ -8,4 +8,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_text">Einloggen</string>
     <string name="registrieren_text">Registrieren</string>
+    <string name="Buttonfreunde">Freunde</string>
+    <string name="Buttonfreundefinden">Vorschläge</string>
+    <string name="Buttonfreundeanfragen">Anfragen</string>
+    <string name="logge_dich_mit_einem_bestehenden_account_ein">Logge dich mit einem bestehenden Account ein.</string>
 </resources>
