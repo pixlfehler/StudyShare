@@ -62,6 +62,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
                 args.putString("stufe", model.getDokument_klasse());
                 args.putInt("image",model.getdokument_image());
                 args.putParcelableArrayList("comments",model.getComments());
+                args.putBoolean("inbesitz", model.getinbesitz());
 
                 newFragment.setArguments(args);
 

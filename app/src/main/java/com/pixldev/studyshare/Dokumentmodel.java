@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Dokumentmodel {
         private String dokument_name;
         private String dokument_fach;
+        private boolean inbesitz = false;
 
         private String dokument_typ;
         private String dokument_klasse;
@@ -15,12 +16,13 @@ public class Dokumentmodel {
         public ArrayList<KommentarModel> comments= new ArrayList<KommentarModel>();
 
         // Constructor
-        public Dokumentmodel(String dokument_name, String dokument_fach, String dokument_typ, String dokument_klasse, int dokument_thumbnail) {
+        public Dokumentmodel(String dokument_name, String dokument_fach, String dokument_typ, String dokument_klasse, int dokument_thumbnail,boolean inbesitz) {
             this.dokument_name = dokument_name;
             this.dokument_fach = dokument_fach;
             this.dokument_typ = dokument_typ;
             this.dokument_klasse = dokument_klasse;
             this.dokument_thumbnail = dokument_thumbnail;
+            this.inbesitz = inbesitz;
 
             addComments();
         }
@@ -68,20 +70,23 @@ public class Dokumentmodel {
             return comments;
         }
 
-    public String getDokument_typ() {
-        return dokument_typ;
-    }
+        public String getDokument_typ() {
+            return dokument_typ;
+        }
 
-    public void setDokument_typ(String dokument_typ) {
-        this.dokument_typ = dokument_typ;
-    }
+        public void setDokument_typ(String dokument_typ) {
+            this.dokument_typ = dokument_typ;
+        }
 
-    public String getDokument_klasse() {
-        return dokument_klasse;
-    }
+        public String getDokument_klasse() {
+            return dokument_klasse;
+        }
 
-    public void setDokument_klasse(String dokument_klasse) {
-        this.dokument_klasse = dokument_klasse;
-    }
+        public void setDokument_klasse(String dokument_klasse) {
+            this.dokument_klasse = dokument_klasse;
+        }
+        public boolean getinbesitz(){return inbesitz;}
+
+        public void setinbesitz(boolean inbesitz){inbesitz=this.inbesitz;}
 }
 
