@@ -18,29 +18,29 @@ import com.pixldev.studyshare.ui.detailFragment;
 
 import java.util.ArrayList;
 
-public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHolder> {
+public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHolder> {
 
-    private final ArrayList<Freundemodel> freundeModelArrayList;
+    private final ArrayList<Anfragenmodel> anfragenModelArrayList;
     private final Context context;
 
-    public Freundeadapter(Context context, ArrayList<Freundemodel> freundeModelArrayList) {
+    public Anfragenadapter(Context context, ArrayList<Anfragenmodel> anfragenModelArrayList) {
         this.context = context;
-        this.freundeModelArrayList = freundeModelArrayList;
+        this.anfragenModelArrayList = anfragenModelArrayList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_freunde_recyclerview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_anfragen_recyclerview, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Freundemodel model = freundeModelArrayList.get(position);
-        holder.nameTV.setText(model.getname());
-        holder.stufeTV.setText(model.getstufe());
-        holder.freundeThumbnailIV.setImageResource(model.getfreunde_thumbnail());
+        Anfragenmodel model = anfragenModelArrayList.get(position);
+        holder.nameTV.setText(model.getnameanfarge());
+        holder.stufeTV.setText(model.getstufeanfarge());
+        holder.anfragenThumbnailIV.setImageResource(model.getanfarge_thumbnail());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +48,9 @@ public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHold
                 Fragment newFragment = new detailFragment();
 
                 Bundle args = new Bundle();
-                args.putString("name", model.getname());
-                args.putString("stufe", model.getstufe());
-                args.putInt("freunde_thumbnail", model.getfreunde_thumbnail());
+                args.putString("name", model.getnameanfarge());
+                args.putString("stufe", model.getstufeanfarge());
+                args.putInt("anfragen_thumbnail", model.getanfarge_thumbnail());
 
                 newFragment.setArguments(args);
 
@@ -66,19 +66,20 @@ public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return freundeModelArrayList.size();
+        return anfragenModelArrayList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView freundeThumbnailIV;
+        private final ImageView anfragenThumbnailIV;
         private final TextView nameTV;
         private final TextView stufeTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            freundeThumbnailIV = itemView.findViewById(R.id.anfragen_thumbnail);
+            anfragenThumbnailIV = itemView.findViewById(R.id.anfragen_thumbnail);
             nameTV = itemView.findViewById(R.id.name);
             stufeTV = itemView.findViewById(R.id.stufe);
         }
     }
 }
+

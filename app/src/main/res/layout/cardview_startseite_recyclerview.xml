@@ -29,7 +29,7 @@
 
 
         <ImageView
-            android:id="@+id/freunde_thumbnail"
+            android:id="@+id/anfragen_thumbnail"
             android:layout_width="140dp"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
@@ -47,7 +47,7 @@
             android:fontFamily="sans-serif-black"
             android:text="Titel des Dokuments"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/freunde_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/anfragen_thumbnail"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

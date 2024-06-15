@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.pixldev.studyshare.AnfragenFregment;
 import com.pixldev.studyshare.FreundeFragment;
 import com.pixldev.studyshare.NewsFragment;
 import com.pixldev.studyshare.R;
@@ -49,6 +50,7 @@ public class interactionsFragment extends Fragment {
         Button buttonFreunde = view.findViewById(R.id.buttonFreunde);
         Button buttonFreundeFinden = view.findViewById(R.id.button2);
         Button buttonneues = view.findViewById(R.id.button3);
+        loadFragment(new FreundeFragment());
 
         buttonFreunde.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +62,7 @@ public class interactionsFragment extends Fragment {
         buttonFreundeFinden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadFragment(new FreundefindenFragment());
+                loadFragment(new AnfragenFregment());
             }
         });
 

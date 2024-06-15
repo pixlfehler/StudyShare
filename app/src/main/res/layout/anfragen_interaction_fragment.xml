@@ -14,7 +14,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/FreundeRV"
+            android:id="@+id/AnfragenRV"
             android:layout_width="match_parent"
             android:layout_height="460dp"
             android:background="@color/white" />
