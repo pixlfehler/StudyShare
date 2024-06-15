@@ -33,8 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="sans-serif-black"
+            android:lines="1"
             android:text="Titel des Dokuments"
-            android:textSize="20sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_cardview" />
@@ -43,7 +44,7 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +68,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/biology_green"
                         android:gravity="center"
+                        android:lines="1"
                         android:padding="3dp"
                         android:text="Biologie"
                         android:textSize="10sp"
@@ -90,8 +92,9 @@
                         android:layout_height="wrap_content"
                         android:background="@color/dark_purple"
                         android:gravity="center"
+                        android:lines="1"
                         android:padding="3dp"
-                        android:text="5"
+                        android:text="Übungsaufgabe"
                         android:textSize="10sp"
                         app:autoSizeMaxTextSize="12sp"
                         app:autoSizeMinTextSize="8sp"
@@ -120,8 +123,9 @@
                         android:layout_height="wrap_content"
                         android:background="@color/higher_classes_yellow"
                         android:gravity="center"
+                        android:lines="1"
                         android:padding="3dp"
-                        android:text="5 Freunde"
+                        android:text="Q1"
                         android:textSize="10sp"
                         app:autoSizeMaxTextSize="12sp"
                         app:autoSizeMinTextSize="8sp"
@@ -138,14 +142,17 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView9"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:icon="@drawable/baseline_edit_24"
+            app:iconSize="30dp"
+            app:iconTint="@color/light_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/baseline_edit_24"
-            android:layout_margin="5dp"/>
+            android:layout_marginBottom="-10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

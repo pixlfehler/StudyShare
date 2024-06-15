@@ -46,7 +46,7 @@ public class interactionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_interactions, container, false);
 
         // Initialize buttons
-        Button buttonFreunde = view.findViewById(R.id.buttonfreunde);
+        Button buttonFreunde = view.findViewById(R.id.buttonFreunde);
         Button buttonFreundeFinden = view.findViewById(R.id.button2);
         Button buttonneues = view.findViewById(R.id.button3);
 

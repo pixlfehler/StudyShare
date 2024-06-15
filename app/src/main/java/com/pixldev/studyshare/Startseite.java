@@ -51,5 +51,7 @@ public class Startseite extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         Log.d("Startseite", "naccontroller erstellt");
         NavigationUI.setupWithNavController(navView, navController);
+
+        navView.getOrCreateBadge(R.id.interactionsFragment).setNumber(7);
     }
 }

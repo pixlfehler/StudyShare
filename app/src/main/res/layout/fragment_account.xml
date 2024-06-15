@@ -169,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-black"
-        android:text="Meine Dokumente"
+        android:text="Dokumente verwalten"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
