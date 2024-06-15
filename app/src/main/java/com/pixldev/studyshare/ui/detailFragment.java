@@ -49,13 +49,13 @@ public class detailFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String TAG = "detailFragment";
-    private String web_url = "https://www.bundesamtsozialesicherung.de/fileadmin/media/test__pdfs/Test_PDF.pdf";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private boolean ersatz;
+
+    private String web_url = "https://www.bundesamtsozialesicherung.de/fileadmin/media/test__pdfs/Test_PDF.pdf";
+    private static final String TAG = "detailFragment";
 
     public ArrayList<KommentarModel> commentArrayList;
 
@@ -72,6 +72,7 @@ public class detailFragment extends Fragment {
      * @return A new instance of fragment detailFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
@@ -108,8 +109,7 @@ public class detailFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_detail, container, false);
 
         Button commentButton=view.findViewById(R.id.commentButton);
-        Button kauf_downloadbutton=view.findViewById(R.id.buttonkaufen_download);
-
+        Button kauf_downloadbutton=view.findViewById(R.id.buyButton);
 
 
         commentArrayList = new ArrayList<KommentarModel>();
@@ -124,42 +124,44 @@ public class detailFragment extends Fragment {
         if(getArguments()!=null) {
             Bundle args = getArguments();
             boolean inbesitz = args.getBoolean("inbesitz");
+
             docTitle.setText(getArguments().getString("title"));
             docFach.setText(getArguments().getString("fach"));
             docTyp.setText(getArguments().getString("typ"));
             docStufe.setText(getArguments().getString("stufe"));
+
             thumbnailIV.setImageResource(getArguments().getInt("image"));
+
+            commentArrayList=getArguments().getParcelableArrayList("comments");
+
             if (inbesitz) {
                 kauf_downloadbutton.setText("Jetzt Herunterladen");}
             else
-            {kauf_downloadbutton.setText("Kaufen für"+"Wert Preis");
-            ersatz=true;}
+            {kauf_downloadbutton.setText("Kaufen für"+"Wert Preis");}
             kauf_downloadbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                if(inbesitz){
-                    Log.d(TAG, "Download button clicked");
-                    if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_DENIED) {
-                        Log.d(TAG, "Requesting permissions");
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-                            if (!Environment.isExternalStorageManager()) {
-                                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                                startActivity(intent);
+                    if(inbesitz){
+                        Log.d(TAG, "Download button clicked");
+                        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_DENIED) {
+                            Log.d(TAG, "Requesting permissions");
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                                if (!Environment.isExternalStorageManager()) {
+                                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                                    startActivity(intent);
+                                } else {
+                                    startDownloading();
+                                }
                             } else {
-                                startDownloading();
+                                requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
                             }
                         } else {
-                            requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                        }
-                    } else {
-                        Log.d(TAG, "Permissions already granted, starting download");
-                        startDownloading();
-                    }}
+                            Log.d(TAG, "Permissions already granted, starting download");
+                            startDownloading();
+                        }}
                 }
             });
 
-
-            commentArrayList=getArguments().getParcelableArrayList("comments");
         }
 
 
@@ -199,6 +201,7 @@ public class detailFragment extends Fragment {
 
         return view;
     }
+
 
     private void startDownloading() {
         String url = web_url;

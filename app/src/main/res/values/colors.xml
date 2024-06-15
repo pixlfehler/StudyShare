@@ -18,7 +18,10 @@
 
     //Fächerfarben
     <color name="biology_green">#86D66F</color>
+    <color name="pastel_green">#C8FFB8</color>
     
     //Stufenfarben
     <color name="higher_classes_yellow">#FFD500</color>
+
+
 </resources>

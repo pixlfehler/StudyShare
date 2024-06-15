@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fach_options">
+        <item>Biologie</item>
+        <item>Deutsch</item>
+        <item>Mathe</item>
+    </string-array>
+
+    <string-array name="typ_options">
+        <item>Übungsaufgabe</item>
+        <item>Vokabeln</item>
+        <item>Lernzettel</item>
+    </string-array>
+
+    <string-array name="stufe_options">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>Q1</item>
+    </string-array>
+</resources>

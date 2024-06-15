@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class Dokumentmodel {
         private String dokument_name;
         private String dokument_fach;
-        private boolean inbesitz = false;
 
         private String dokument_typ;
         private String dokument_klasse;
 
         private String dokumentBeschreibung;
         private int dokument_thumbnail;
+
+        private boolean inbesitz = false;
 
         public ArrayList<KommentarModel> comments= new ArrayList<KommentarModel>();
 
@@ -70,23 +71,24 @@ public class Dokumentmodel {
             return comments;
         }
 
-        public String getDokument_typ() {
-            return dokument_typ;
-        }
+    public String getDokument_typ() {
+        return dokument_typ;
+    }
 
-        public void setDokument_typ(String dokument_typ) {
-            this.dokument_typ = dokument_typ;
-        }
+    public void setDokument_typ(String dokument_typ) {
+        this.dokument_typ = dokument_typ;
+    }
 
-        public String getDokument_klasse() {
-            return dokument_klasse;
-        }
+    public String getDokument_klasse() {
+        return dokument_klasse;
+    }
 
-        public void setDokument_klasse(String dokument_klasse) {
-            this.dokument_klasse = dokument_klasse;
-        }
-        public boolean getinbesitz(){return inbesitz;}
+    public void setDokument_klasse(String dokument_klasse) {
+        this.dokument_klasse = dokument_klasse;
+    }
 
-        public void setinbesitz(boolean inbesitz){inbesitz=this.inbesitz;}
+    public boolean getinbesitz(){return inbesitz;}
+
+    public void setinbesitz(boolean inbesitz){inbesitz=this.inbesitz;}
 }
 
