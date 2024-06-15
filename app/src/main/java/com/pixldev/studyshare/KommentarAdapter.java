@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.RatingBar;
 import androidx.annotation.NonNull;
@@ -59,7 +58,7 @@ public class KommentarAdapter extends RecyclerView.Adapter<KommentarAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            authorTextView = itemView.findViewById(R.id.author_pl);
+            authorTextView = itemView.findViewById(R.id.name);
             contentTextView = itemView.findViewById(R.id.content_pl);
             ratingBar = itemView.findViewById(R.id.rating_pl);
         }

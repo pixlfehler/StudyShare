@@ -14,9 +14,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.pixldev.studyshare.ui.detailFragment;
 
 import java.util.ArrayList;
@@ -92,8 +89,8 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dokumentIV = itemView.findViewById(R.id.image_cardview);
-            titleDokumentTV = itemView.findViewById(R.id.author_pl);
+            dokumentIV = itemView.findViewById(R.id.freunde_thumbnail);
+            titleDokumentTV = itemView.findViewById(R.id.name);
             dokumentfachTV = itemView.findViewById(R.id.Fach);
             dokumenttypTV = itemView.findViewById(R.id.Typ);
             dokumentstufeTV = itemView.findViewById(R.id.Stufe);

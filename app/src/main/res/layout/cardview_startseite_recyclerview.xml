@@ -29,7 +29,7 @@
 
 
         <ImageView
-            android:id="@+id/image_cardview"
+            android:id="@+id/freunde_thumbnail"
             android:layout_width="140dp"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
@@ -40,14 +40,14 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/author_pl"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="sans-serif-black"
             android:text="Titel des Dokuments"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/image_cardview"
+            app:layout_constraintStart_toEndOf="@+id/freunde_thumbnail"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -59,8 +59,8 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Biologie"
-            app:layout_constraintStart_toStartOf="@+id/author_pl"
-            app:layout_constraintTop_toBottomOf="@+id/author_pl" />
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
             android:id="@+id/Typ"
@@ -71,7 +71,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Übungsaufgabe"
-            app:layout_constraintStart_toStartOf="@+id/author_pl"
+            app:layout_constraintStart_toStartOf="@+id/name"
             app:layout_constraintTop_toBottomOf="@+id/Fach" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingHorizontal="14dp"
             android:text="Q1"
-            app:layout_constraintStart_toStartOf="@+id/author_pl"
+            app:layout_constraintStart_toStartOf="@+id/name"
             app:layout_constraintTop_toBottomOf="@+id/Typ" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
