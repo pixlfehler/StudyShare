@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="3500"
-            android:textSize="23dp"
+            android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toStartOf="@id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView3" />
