@@ -52,7 +52,7 @@
                 android:background="@color/light_grey" />
 
             <TextView
-                android:id="@+id/stufe"
+                android:id="@+id/docCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stufe"

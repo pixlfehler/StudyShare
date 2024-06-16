@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pixldev.studyshare.ui.detailFragment;
+import com.pixldev.studyshare.ui.UserDetailFragment;
 
 import java.util.ArrayList;
 
@@ -38,19 +38,21 @@ public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Freundemodel model = freundeModelArrayList.get(position);
-        holder.nameTV.setText(model.getname());
+        holder.nameTV.setText(model.getname()+" ("+model.getUsername()+")");
         holder.stufeTV.setText(model.getstufe());
         holder.freundeThumbnailIV.setImageResource(model.getfreunde_thumbnail());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment newFragment = new detailFragment();
+                Fragment newFragment = new UserDetailFragment();
 
                 Bundle args = new Bundle();
                 args.putString("name", model.getname());
+                args.putString("username", model.getUsername());
                 args.putString("stufe", model.getstufe());
-                args.putInt("freunde_thumbnail", model.getfreunde_thumbnail());
+                args.putInt("friendCount",model.getFriendCount());
+                args.putInt("profilePic", model.getfreunde_thumbnail());
 
                 newFragment.setArguments(args);
 
@@ -78,7 +80,7 @@ public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHold
             super(itemView);
             freundeThumbnailIV = itemView.findViewById(R.id.anfragen_thumbnail);
             nameTV = itemView.findViewById(R.id.name);
-            stufeTV = itemView.findViewById(R.id.stufe);
+            stufeTV = itemView.findViewById(R.id.docCount);
         }
     }
 }

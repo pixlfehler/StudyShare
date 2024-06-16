@@ -94,7 +94,7 @@ public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHo
             super(itemView);
             anfragenThumbnailIV = itemView.findViewById(R.id.anfragen_thumbnail);
             nameTV = itemView.findViewById(R.id.name);
-            stufeTV = itemView.findViewById(R.id.stufe);
+            stufeTV = itemView.findViewById(R.id.docCount);
         }
     }
 }

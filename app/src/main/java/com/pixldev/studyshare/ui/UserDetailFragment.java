@@ -3,12 +3,20 @@ package com.pixldev.studyshare.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.pixldev.studyshare.Dokumenteadapter_tworows;
+import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +69,46 @@ public class UserDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_detail, container, false);
+        View view1 = inflater.inflate(R.layout.fragment_user_detail, container, false);
+
+        TextView usernameTV=view1.findViewById(R.id.usernameTV);
+        TextView stufe=view1.findViewById(R.id.stufe);
+        TextView friendCount=view1.findViewById(R.id.friendCount);
+
+        ImageView profilePic=view1.findViewById(R.id.profilePicIV);
+
+        RecyclerView recyclerView = view1.findViewById(R.id.dokumentRV);
+
+
+        if(getArguments()!=null) {
+            Bundle args = getArguments();
+
+            usernameTV.setText(getArguments().getString("username"));
+            stufe.setText(getArguments().getString("stufe"));
+            friendCount.setText(getArguments().getInt("friendCount")+" Freunde");
+
+            profilePic.setImageResource(getArguments().getInt("profilePic"));
+        }
+
+
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // Zwei Spalten
+
+        ArrayList<Dokumentmodel> itemList = new ArrayList<>();
+
+        itemList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel","EF", R.drawable.document_placeholder,true));
+        itemList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe","7", R.drawable.document_placeholder,false));
+        itemList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder,false));
+        itemList.add(new Dokumentmodel("Mathematik Übungsaufgaben", "Mathematik", "Übungsaufgabe", "Q1", R.drawable.document_placeholder,false));
+        itemList.add(new Dokumentmodel("Geschichtsreferat über Mittelalter", "Geschichte", "Referat", "Q2", R.drawable.document_placeholder,false));
+        itemList.add(new Dokumentmodel("Chemie Laborbericht", "Chemie", "Laborbericht", "EF", R.drawable.document_placeholder,false));
+        itemList.add(new Dokumentmodel("Englisch Essay zu Shakespeare", "Englisch", "Essay", "Q1", R.drawable.document_placeholder,false));
+        // Füge Daten zur itemList hinzu
+
+        Dokumenteadapter_tworows adapter = new Dokumenteadapter_tworows(getContext(), itemList);
+        recyclerView.setAdapter(adapter);
+
+        return view1;
     }
 }

@@ -111,9 +111,9 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         Button dismissButton=dialog.findViewById(R.id.dismissButton);
         EditText titleET=dialog.findViewById(R.id.docTitle);
         EditText description=dialog.findViewById(R.id.DescriptionET);
-        EditText fach=dialog.findViewById(R.id.fach);
-        EditText typ=dialog.findViewById(R.id.typ);
-        EditText stufe=dialog.findViewById(R.id.stufe);
+        EditText fach=dialog.findViewById(R.id.stufe);
+        EditText typ=dialog.findViewById(R.id.friendCount);
+        EditText stufe=dialog.findViewById(R.id.docCount);
         EditText preis=dialog.findViewById(R.id.preis);
 
         titleET.setText(pDocTitle);

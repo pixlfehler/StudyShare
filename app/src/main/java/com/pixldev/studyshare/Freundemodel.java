@@ -5,15 +5,23 @@ import android.os.Parcelable;
 
 public class Freundemodel {
     private String name;
+
+    private String username;
+
+    private int friendCount;
+
     private String stufe;
     private int freunde_thumbnail;
 
 
     // Constructor
-    public Freundemodel(String name, String stufe, int freunde_thumbnail) {
+    public Freundemodel(String name, String username, String stufe, int friendCount, int freunde_thumbnail) {
         this.name = name;
         this.stufe = stufe;
         this.freunde_thumbnail = freunde_thumbnail;
+        this.username=username;
+        this.stufe=stufe;
+        this.friendCount=friendCount;
     }
 
 
@@ -42,6 +50,22 @@ public class Freundemodel {
 
     public void setfreunde_thumbnail(int freunde_thumbnail) {
         this.freunde_thumbnail = freunde_thumbnail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getFriendCount() {
+        return friendCount;
+    }
+
+    public void setFriendCount(int friendCount) {
+        this.friendCount = friendCount;
     }
 
     // Parcelable implementation
