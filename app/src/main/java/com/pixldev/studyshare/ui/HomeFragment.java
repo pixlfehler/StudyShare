@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView courseRV = view.findViewById(R.id.RVdokument);
+        RecyclerView courseRV = view.findViewById(R.id.RVmeinedokumente);
 
         FloatingActionButton newDocButton=view.findViewById(R.id.newDocButton);
 
