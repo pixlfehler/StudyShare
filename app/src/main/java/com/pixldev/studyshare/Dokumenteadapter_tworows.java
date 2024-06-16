@@ -108,7 +108,7 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         dialog.setContentView(R.layout.edit_document_dialog);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        Button dismissButton=dialog.findViewById(R.id.freundablehnen);
+        Button dismissButton=dialog.findViewById(R.id.dismissButton);
         EditText titleET=dialog.findViewById(R.id.docTitle);
         EditText description=dialog.findViewById(R.id.DescriptionET);
         EditText fach=dialog.findViewById(R.id.fach);

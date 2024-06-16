@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.button.MaterialButton;
-import com.pixldev.studyshare.R;
 
 public class UploadDialogFragment extends DialogFragment {
 
@@ -40,6 +40,10 @@ public class UploadDialogFragment extends DialogFragment {
 
     private TextView selectedFileNameTextView;
 
+    MaterialButton uploadButton;
+
+    Button dismissButton;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,7 +51,16 @@ public class UploadDialogFragment extends DialogFragment {
 
         selectedFileNameTextView = view.findViewById(R.id.selectedFileName);
 
-        MaterialButton uploadButton = view.findViewById(R.id.uploadButton);
+        uploadButton = view.findViewById(R.id.uploadButton);
+
+        dismissButton=view.findViewById(R.id.dismissButton);
+
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +98,7 @@ public class UploadDialogFragment extends DialogFragment {
                 fileUri = result.getData().getData();
                 if (fileUri != null) {
                     String fileName = getFileName(fileUri);
-                    selectedFileNameTextView.setText("Selected File: " + fileName);
-                    selectedFileNameTextView.setVisibility(View.VISIBLE);
+                    uploadButton.setText(fileName);
                     Log.d(TAG, "Selected File Uri: " + fileUri.toString());
                 }
             }
