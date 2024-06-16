@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="Dokument hochladen"
+                    android:text="Dokument bearbeiten"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Stelle bitte sicher, dass die Informationen in deinem Dokument stimmen."
+                    android:text="Du kannst die hochgeladene Datei nicht ändern, aber die Attribute bearbeiten."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/trennlinie" />
@@ -110,7 +110,8 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="40dp"
                         android:paddingHorizontal="20dp"
-                        android:text="Datei hochladen (.pdf)"
+                        android:text="Dateiname.pdf"
+                        android:enabled="false"
                         app:icon="@drawable/baseline_cloud_upload_24" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -121,9 +122,11 @@
                         app:counterEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/docTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Titel" />
+                            android:hint="Titel"
+                            android:text="Dokumenttitel" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,9 +138,11 @@
                         app:counterEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/DescriptionET"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            android:hint="Beschreibung" />
+                            android:hint="Beschreibung"
+                            android:text="Beschreibungstext lorem ipsum." />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -147,12 +152,14 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/fach"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/fach_upload_bg"
                             android:fontFamily="sans-serif-black"
                             android:inputType="none"
+                            android:text="Ausgewähltes Fach"
                             app:simpleItems="@array/fach_options" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -165,12 +172,14 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/typ"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/typ_upload_bg"
                             android:fontFamily="sans-serif-black"
                             android:inputType="none"
+                            android:text="Ausgewählter Typ"
                             android:textColor="@color/white"
                             app:simpleItems="@array/typ_options" />
 
@@ -183,12 +192,14 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/stufe"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="20dp"
                             android:background="@drawable/stufe_upload_bg"
                             android:fontFamily="sans-serif-black"
                             android:inputType="none"
+                            android:text="Ausgewählte Stufe"
                             app:simpleItems="@array/stufe_options" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -198,11 +209,13 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/preis"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="20dp"
                             android:hint="Preis"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="3000" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

@@ -175,9 +175,6 @@ public class detailFragment extends Fragment {
 
                 RecyclerView commentRV = view1.findViewById(R.id.commentRV);
 
-                // Here, we have created new array list and added data to it
-
-
                 commentArrayList.add(new KommentarModel("pixlfehler","Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll!",1));
                 commentArrayList.add(new KommentarModel("jappez","Super!",4));
                 commentArrayList.add(new KommentarModel("AnonymerNutzer123","yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyo"));

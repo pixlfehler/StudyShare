@@ -1,10 +1,13 @@
 package com.pixldev.studyshare;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +48,13 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         holder.titleDokumentTV.setText(model.getdokument_name());
         holder.dokumentIV.setImageResource(model.getdokument_image());
 
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditDocDialog(model.getdokument_name(),"Lorem ipsum",model.getdokument_fach(),model.getDokument_typ(),model.getDokument_klasse(),"1000");
+            }
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +91,45 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         private final ImageView dokumentIV;
         private final TextView titleDokumentTV;
 
+        private final Button editButton;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.image_cardview);
             titleDokumentTV = itemView.findViewById(R.id.author_pl);
+            editButton=itemView.findViewById(R.id.editButton);
         }
+    }
+
+
+    public void showEditDocDialog(String pDocTitle, String pDocDescription, String pFach, String pTyp, String pStufe, String pPreis){
+        Dialog dialog= new Dialog(context);
+
+        dialog.setContentView(R.layout.edit_document_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        Button dismissButton=dialog.findViewById(R.id.dismissButton);
+        EditText titleET=dialog.findViewById(R.id.docTitle);
+        EditText description=dialog.findViewById(R.id.DescriptionET);
+        EditText fach=dialog.findViewById(R.id.fach);
+        EditText typ=dialog.findViewById(R.id.typ);
+        EditText stufe=dialog.findViewById(R.id.stufe);
+        EditText preis=dialog.findViewById(R.id.preis);
+
+        titleET.setText(pDocTitle);
+        description.setText(pDocDescription);
+        fach.setText(pFach);
+        typ.setText(pTyp);
+        stufe.setText(pStufe);
+        preis.setText(pPreis);
+
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
