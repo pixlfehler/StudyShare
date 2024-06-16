@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pixldev.studyshare.Dokumenteadapter;
 import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
+import com.pixldev.studyshare.UploadDialogFragment;
 
 import java.util.ArrayList;
 
@@ -74,7 +75,7 @@ public class HomeFragment extends Fragment {
         FloatingActionButton newDocButton=view.findViewById(R.id.newDocButton);
 
         // Here, we have created new array list and added data to it
-        ArrayList<Dokumentmodel> dokumentmodelArrayList = new ArrayList<Dokumentmodel>();
+        ArrayList<Dokumentmodel> dokumentmodelArrayList = new ArrayList<>();
         dokumentmodelArrayList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel","EF", R.drawable.document_placeholder,true));
         dokumentmodelArrayList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe","7", R.drawable.document_placeholder,false));
         dokumentmodelArrayList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder,false));
@@ -98,8 +99,13 @@ public class HomeFragment extends Fragment {
         newDocButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showNewDocDialog();
+                // Beispielcode, wie das Dialog-Fragment im HomeFragment angezeigt wird
+                UploadDialogFragment dialogFragment = new UploadDialogFragment();
+                dialogFragment.show(getChildFragmentManager(), "UploadDialog");
+
             }
+
+
         });
 
 

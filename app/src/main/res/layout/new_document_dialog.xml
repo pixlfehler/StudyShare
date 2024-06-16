@@ -112,6 +112,15 @@
                         android:paddingHorizontal="20dp"
                         android:text="Datei hochladen (.pdf)"
                         app:icon="@drawable/baseline_cloud_upload_24" />
+                    <TextView
+                        android:id="@+id/selectedFileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="No file selected"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/heading" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
