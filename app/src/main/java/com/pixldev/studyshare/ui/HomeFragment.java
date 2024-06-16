@@ -125,7 +125,7 @@ public class HomeFragment extends Fragment {
         dialog.setContentView(R.layout.new_document_dialog);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        Button dismissButton=dialog.findViewById(R.id.dismissButton);
+        Button dismissButton=dialog.findViewById(R.id.freundablehnen);
         dismissButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

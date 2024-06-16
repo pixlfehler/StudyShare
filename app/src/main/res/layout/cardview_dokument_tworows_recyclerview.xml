@@ -5,7 +5,7 @@
     android:id="@+id/holderCV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
+    android:layout_margin="5dp"
     app:cardBackgroundColor="@color/primary"
     app:cardCornerRadius="11dp"
     app:cardMaxElevation="10dp"
@@ -16,16 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image_cardview"
-            android:layout_width="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@id/image_cardview"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/document_placeholder"
-            app:layout_constraintDimensionRatio="5:2"
+            app:layout_constraintDimensionRatio="2:1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="11dp">
+
+        <ImageView
+            android:id="@+id/thumbnailIV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/document_placeholder" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/author_pl"
@@ -33,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="sans-serif-black"
-            android:lines="2"
+            android:lines="1"
             android:text="Titel des Dokuments"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,9 +52,12 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/author_pl">
 
@@ -69,11 +80,11 @@
                         android:background="@color/biology_green"
                         android:gravity="center"
                         android:lines="1"
-                        android:padding="3dp"
+                        android:padding="0dp"
                         android:text="Biologie"
                         android:textSize="10sp"
-                        app:autoSizeMaxTextSize="12sp"
-                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeMaxTextSize="8sp"
+                        app:autoSizeMinTextSize="6sp"
                         app:autoSizeStepGranularity="1sp"
                         app:autoSizeTextType="uniform" />
                 </androidx.cardview.widget.CardView>
@@ -93,11 +104,11 @@
                         android:background="@color/dark_purple"
                         android:gravity="center"
                         android:lines="1"
-                        android:padding="3dp"
+                        android:padding="0dp"
                         android:text="Übungsaufgabe"
                         android:textSize="10sp"
-                        app:autoSizeMaxTextSize="12sp"
-                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeMaxTextSize="8sp"
+                        app:autoSizeMinTextSize="6sp"
                         app:autoSizeStepGranularity="1sp"
                         app:autoSizeTextType="uniform" />
                 </androidx.cardview.widget.CardView>
@@ -124,11 +135,11 @@
                         android:background="@color/higher_classes_yellow"
                         android:gravity="center"
                         android:lines="1"
-                        android:padding="3dp"
+                        android:padding="0dp"
                         android:text="Q1"
                         android:textSize="10sp"
-                        app:autoSizeMaxTextSize="12sp"
-                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeMaxTextSize="8sp"
+                        app:autoSizeMinTextSize="6sp"
                         app:autoSizeStepGranularity="1sp"
                         app:autoSizeTextType="uniform" />
                 </androidx.cardview.widget.CardView>
@@ -148,7 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/baseline_edit_24"
-            app:iconSize="30dp"
+            app:iconSize="25dp"
             app:iconTint="@color/light_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
