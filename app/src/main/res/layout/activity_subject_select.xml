@@ -48,8 +48,8 @@
                 android:text="Für welche Fächer interessieren dich Inhalte?"
                 android:textColor="@color/light_grey" />
 
-            <View
-                android:id="@+id/placeholder1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recylcerView"
                 android:layout_width="match_parent"
                 android:layout_height="400dp" />
 
@@ -58,7 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:text="Einloggen" />
+                android:text="Registrieren"
+                android:transitionName="sharedButton"/>
 
             <View
                 android:id="@+id/placeholder3"

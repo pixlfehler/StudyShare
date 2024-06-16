@@ -3,11 +3,13 @@ package com.pixldev.studyshare;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 
@@ -29,7 +31,8 @@ public class RegistrateActivity extends AppCompatActivity {
                 Intent intent=new Intent(RegistrateActivity.this, SubjectSelectActivity.class);
                 Activity activity=(Activity)RegistrateActivity.this;
 
-                ActivityOptionsCompat optionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(RegistrateActivity.this, myCV, ViewCompat.getTransitionName(myCV));
+                ActivityOptionsCompat optionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation(RegistrateActivity.this, Pair.create(myCV, ViewCompat.getTransitionName(myCV)),
+                        Pair.create(registrateButton, ViewCompat.getTransitionName(registrateButton)));
                 activity.startActivity(intent,optionsCompat.toBundle());
             }
         });
