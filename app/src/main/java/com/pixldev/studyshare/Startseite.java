@@ -23,25 +23,22 @@ import androidx.navigation.ui.NavigationUI;
 import com.pixldev.studyshare.databinding.ActivityStartseiteBinding;
 import com.pixldev.studyshare.ui.detailFragment;
 
-public class Startseite extends AppCompatActivity {
+public class Startseite extends AppCompatActivity implements OnNotificationCountChangeListener {
 
     private ActivityStartseiteBinding binding;
+    private BottomNavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_startseite);
         Log.d("Startseite", "onCreate: Startseite activity created");
-
 
         binding = ActivityStartseiteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Log.d("Startseite", "binding");
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
         Log.d("Startseite", "finding nav_view");
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.HomeFragment, R.id.searchFragment, R.id.libraryFragment, R.id.interactionsFragment, R.id.accountFragment)
                 .build();
@@ -49,9 +46,15 @@ public class Startseite extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
-        Log.d("Startseite", "naccontroller erstellt");
+        Log.d("Startseite", "navcontroller erstellt");
         NavigationUI.setupWithNavController(navView, navController);
 
-        navView.getOrCreateBadge(R.id.interactionsFragment).setNumber(7);
+        // Set an initial badge number if necessary
+        navView.getOrCreateBadge(R.id.interactionsFragment).setNumber(0);
+    }
+
+    @Override
+    public void onNotificationCountChange(int count) {
+        navView.getOrCreateBadge(R.id.interactionsFragment).setNumber(count);
     }
 }

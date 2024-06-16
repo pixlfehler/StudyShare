@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.pixldev.studyshare.AnfragenFregment;
 import com.pixldev.studyshare.BenachrichtigungenFregment;
 import com.pixldev.studyshare.FreundeFragment;
+import com.pixldev.studyshare.Benachrichtigungsadapter;
+import com.pixldev.studyshare.Anfragenadapter;
 import com.pixldev.studyshare.R;
 
 public class interactionsFragment extends Fragment {
@@ -85,5 +87,6 @@ public class interactionsFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
 }
 
