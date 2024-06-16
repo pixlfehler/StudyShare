@@ -156,6 +156,7 @@
                 android:id="@+id/stufe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/biology_green"
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="Q1" />

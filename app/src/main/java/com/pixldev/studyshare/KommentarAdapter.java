@@ -58,7 +58,7 @@ public class KommentarAdapter extends RecyclerView.Adapter<KommentarAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            authorTextView = itemView.findViewById(R.id.name);
+            authorTextView = itemView.findViewById(R.id.author_pl);
             contentTextView = itemView.findViewById(R.id.content_pl);
             ratingBar = itemView.findViewById(R.id.rating_pl);
         }
