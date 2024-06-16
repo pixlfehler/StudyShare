@@ -18,7 +18,7 @@ public class AnfragenFregment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.freunde_interaction_fragment, container, false);
-        RecyclerView anfragenRV = view.findViewById(R.id.FreundeRV);
+        RecyclerView anfragenRV = view.findViewById(R.id.BenachrichtigungenRV);
 
         anfragenRV.setLayoutManager(new LinearLayoutManager(getContext()));
 

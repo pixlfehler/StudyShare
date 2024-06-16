@@ -13,8 +13,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.pixldev.studyshare.AnfragenFregment;
+import com.pixldev.studyshare.BenachrichtigungenFregment;
 import com.pixldev.studyshare.FreundeFragment;
-import com.pixldev.studyshare.NewsFragment;
 import com.pixldev.studyshare.R;
 
 public class interactionsFragment extends Fragment {
@@ -70,7 +70,7 @@ public class interactionsFragment extends Fragment {
         buttonneues.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new NewsFragment());
+                loadFragment(new BenachrichtigungenFregment());
             }
         });
 

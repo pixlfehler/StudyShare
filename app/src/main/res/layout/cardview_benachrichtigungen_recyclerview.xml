@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_placeholder" />
+                android:src="@drawable/ic_notifications_black_24dp" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -37,10 +37,10 @@
             android:paddingVertical="5dp">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/artderbenachrichtigung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name (username)"
+                android:text="Benachrichtigungstyp"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -51,10 +51,10 @@
                 android:background="@color/light_grey" />
 
             <TextView
-                android:id="@+id/stufe"
+                android:id="@+id/infotext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stufe"
+                android:text="Infotext"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
