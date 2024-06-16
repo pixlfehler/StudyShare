@@ -1,10 +1,14 @@
 package com.pixldev.studyshare;
 
+import static com.airbnb.lottie.L.TAG;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -22,6 +26,7 @@ public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHo
 
     private final ArrayList<Anfragenmodel> anfragenModelArrayList;
     private final Context context;
+    private static final String TAG = "Anfragenadapter";
 
     public Anfragenadapter(Context context, ArrayList<Anfragenmodel> anfragenModelArrayList) {
         this.context = context;
@@ -32,6 +37,19 @@ public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_anfragen_recyclerview, parent, false);
+        Button ablehen = view.findViewById(R.id.freundablehnen);
+        Button annehmen = view.findViewById(R.id.freundannehmen);
+            ablehen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "abgelehnt");
+                }
+            });
+            annehmen.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    Log.d(TAG, "angemommen");
+                }
+            });
         return new ViewHolder(view);
     }
 

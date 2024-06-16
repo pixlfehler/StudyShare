@@ -18,6 +18,7 @@ import com.pixldev.studyshare.NewsFragment;
 import com.pixldev.studyshare.R;
 
 public class interactionsFragment extends Fragment {
+    public boolean erstesmal= true;
 
     public interactionsFragment() {
         // Required empty public constructor
@@ -50,7 +51,7 @@ public class interactionsFragment extends Fragment {
         Button buttonFreunde = view.findViewById(R.id.buttonFreunde);
         Button buttonFreundeFinden = view.findViewById(R.id.button2);
         Button buttonneues = view.findViewById(R.id.button3);
-        loadFragment(new FreundeFragment());
+        if(erstesmal){loadFragment(new FreundeFragment());erstesmal=false;}
 
         buttonFreunde.setOnClickListener(new View.OnClickListener() {
             @Override
