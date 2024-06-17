@@ -15,46 +15,34 @@ import androidx.fragment.app.FragmentTransaction;
 import com.pixldev.studyshare.AnfragenFregment;
 import com.pixldev.studyshare.BenachrichtigungenFregment;
 import com.pixldev.studyshare.FreundeFragment;
-import com.pixldev.studyshare.Benachrichtigungsadapter;
-import com.pixldev.studyshare.Anfragenadapter;
 import com.pixldev.studyshare.R;
 
 public class interactionsFragment extends Fragment {
-    public boolean erstesmal= true;
+    public boolean erstesmal = true; // Variable, um zu verfolgen, ob es das erste Mal ist, dass das Fragment geladen wird
 
     public interactionsFragment() {
-        // Required empty public constructor
+        // Erforderlicher leerer öffentlicher Konstruktor
     }
 
-    public static interactionsFragment newInstance(String param1, String param2) {
-        interactionsFragment fragment = new interactionsFragment();
-        Bundle args = new Bundle();
-        args.putString("param1", param1);
-        args.putString("param2", param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString("param1");
-            String mParam2 = getArguments().getString("param2");
-        }
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Inflate das Layout für dieses Fragment
         View view = inflater.inflate(R.layout.fragment_interactions, container, false);
 
-        // Initialize buttons
+        // Initialisiere Buttons
         Button buttonFreunde = view.findViewById(R.id.buttonFreunde);
         Button buttonFreundeFinden = view.findViewById(R.id.button2);
         Button buttonneues = view.findViewById(R.id.button3);
-        if(erstesmal){loadFragment(new FreundeFragment());erstesmal=false;}
 
+        // Lade das FreundeFragment beim ersten Mal, wenn das Fragment geladen wird
+        if (erstesmal) {
+            loadFragment(new FreundeFragment());
+            erstesmal = false; // Setze erstesmal auf false, damit dieses Fragment nicht erneut geladen wird
+        }
+
+        // Setze OnClickListener für den buttonFreunde
         buttonFreunde.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +50,7 @@ public class interactionsFragment extends Fragment {
             }
         });
 
+        // Setze OnClickListener für den buttonFreundeFinden
         buttonFreundeFinden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +58,7 @@ public class interactionsFragment extends Fragment {
             }
         });
 
+        // Setze OnClickListener für den buttonneues
         buttonneues.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,17 +66,15 @@ public class interactionsFragment extends Fragment {
             }
         });
 
-        // Inflate the layout for this fragment
-        return view;
+        return view; // Rückgabe des Views
     }
 
+    // Methode zum Laden eines Fragments in den Container
     private void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        fragmentTransaction.replace(R.id.fragment_container, fragment); // Ersetze den Containerinhalt durch das neue Fragment
+        fragmentTransaction.addToBackStack(null); // Füge die Transaktion zum Backstack hinzu, damit der Benutzer zurück navigieren kann
+        fragmentTransaction.commit(); // Bestätige die Transaktion
     }
-
 }
-
