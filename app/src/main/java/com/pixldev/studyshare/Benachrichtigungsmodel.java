@@ -12,7 +12,7 @@ public class Benachrichtigungsmodel {
     }
 
 
-    // Getter and Setter for author
+    // Getter and Setter für author
     public String getartderbenachrichtigung() {
         return artderbenachrichtigung;
     }
@@ -21,7 +21,7 @@ public class Benachrichtigungsmodel {
         this.artderbenachrichtigung = artderbenachrichtigung;
     }
 
-    // Getter and Setter for content
+    // Getter and Setter für content
     public String getinfotext() {
         return infotext;
     }
@@ -30,8 +30,6 @@ public class Benachrichtigungsmodel {
         this.infotext = infotext;
     }
 
-
-    // Parcelable implementation
 
 
 }

@@ -59,7 +59,6 @@ public class detailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Layout für dieses Fragment aufblähen
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
 
         // Referenzen zu den UI-Elementen

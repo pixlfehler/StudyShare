@@ -3,74 +3,73 @@ package com.pixldev.studyshare;
 import java.util.ArrayList;
 
 public class Dokumentmodel {
-        private String dokument_name;
-        private String dokument_fach;
+    private String dokument_name;
+    private String dokument_fach;
+    private String dokument_typ;
+    private String dokument_klasse;
+    private int dokument_thumbnail;
+    private boolean inbesitz = false;
+    public ArrayList<KommentarModel> comments = new ArrayList<>();
 
-        private String dokument_typ;
-        private String dokument_klasse;
+    // Konstruktor
+    public Dokumentmodel(String dokument_name, String dokument_fach, String dokument_typ, String dokument_klasse, int dokument_thumbnail, boolean inbesitz) {
+        this.dokument_name = dokument_name;
+        this.dokument_fach = dokument_fach;
+        this.dokument_typ = dokument_typ;
+        this.dokument_klasse = dokument_klasse;
+        this.dokument_thumbnail = dokument_thumbnail;
+        this.inbesitz = inbesitz;
 
-        private String dokumentBeschreibung;
-        private int dokument_thumbnail;
+        addComments(); // Fügt Standardkommentare hinzu
+    }
 
-        private boolean inbesitz = false;
+    // Getter und Setter für dokument_name
+    public String getdokument_name() {
+        return dokument_name;
+    }
 
-        public ArrayList<KommentarModel> comments= new ArrayList<KommentarModel>();
+    public void setdokument_name(String dokument_name) {
+        this.dokument_name = dokument_name;
+    }
 
-        // Constructor
-        public Dokumentmodel(String dokument_name, String dokument_fach, String dokument_typ, String dokument_klasse, int dokument_thumbnail,boolean inbesitz) {
-            this.dokument_name = dokument_name;
-            this.dokument_fach = dokument_fach;
-            this.dokument_typ = dokument_typ;
-            this.dokument_klasse = dokument_klasse;
-            this.dokument_thumbnail = dokument_thumbnail;
-            this.inbesitz = inbesitz;
+    // Getter und Setter für dokument_fach
+    public String getdokument_fach() {
+        return dokument_fach;
+    }
 
-            addComments();
-        }
+    public void setdokument_fach(String dokument_fach) {
+        this.dokument_fach = dokument_fach;
+    }
 
-        // Getter and Setter
-        public String getdokument_name() {
-            return dokument_name;
-        }
+    // Getter und Setter für dokument_thumbnail
+    public int getdokument_image() {
+        return dokument_thumbnail;
+    }
 
-        public void setdokument_name(String course_name) {
-            this.dokument_name = course_name;
-        }
+    public void setdokument_image(int dokument_thumbnail) {
+        this.dokument_thumbnail = dokument_thumbnail;
+    }
 
-        public String getdokument_fach() {
-            return dokument_fach;
-        }
+    // Getter für comments
+    public ArrayList<KommentarModel> getComments() {
+        return comments;
+    }
 
-        public void setdokument_fach(String dokument_fach) {
-            this.dokument_fach = dokument_fach;
-        }
+    // Fügt Beispielkommentare hinzu
+    public void addComments() {
+        comments.add(new KommentarModel("Benutzer123", "Das Produkt ist großartig und hat meine Erwartungen übertroffen.", 5));
+        comments.add(new KommentarModel("AnnaM", "Guter Kundenservice, aber das Produkt ist durchschnittlich.", 3));
+        comments.add(new KommentarModel("MaxPower", "Sehr enttäuscht, die Qualität ist schlecht.", 1));
+        comments.add(new KommentarModel("Sarah89", "Solides Produkt, würde es wieder kaufen.", 4));
+        comments.add(new KommentarModel("Tommy76", "Preis-Leistungs-Verhältnis stimmt, bin zufrieden.", 4));
+        comments.add(new KommentarModel("LenaLoves", "Nicht schlecht, aber auch nicht herausragend.", 3));
+        comments.add(new KommentarModel("JonasS", "Schnelle Lieferung und gute Qualität.", 5));
+        comments.add(new KommentarModel("ClaudiaB", "Produkt kam beschädigt an, musste es zurückschicken.", 2));
+        comments.add(new KommentarModel("Mike92", "Alles wie beschrieben, bin zufrieden.", 4));
+        comments.add(new KommentarModel("EllaZ", "Top-Produkt, kann ich nur weiterempfehlen.", 5));
+    }
 
-        public int getdokument_image() {
-            return dokument_thumbnail;
-        }
-
-        public void setdokument_image(int dokument_thumbnail) {
-            this.dokument_thumbnail = dokument_thumbnail;
-        }
-
-
-        public void addComments(){
-            comments.add(new KommentarModel("Benutzer123", "Das Produkt ist großartig und hat meine Erwartungen übertroffen.", 5));
-            comments.add(new KommentarModel("AnnaM", "Guter Kundenservice, aber das Produkt ist durchschnittlich.", 3));
-            comments.add(new KommentarModel("MaxPower", "Sehr enttäuscht, die Qualität ist schlecht.", 1));
-            comments.add(new KommentarModel("Sarah89", "Solides Produkt, würde es wieder kaufen.", 4));
-            comments.add(new KommentarModel("Tommy76", "Preis-Leistungs-Verhältnis stimmt, bin zufrieden.", 4));
-            comments.add(new KommentarModel("LenaLoves", "Nicht schlecht, aber auch nicht herausragend.", 3));
-            comments.add(new KommentarModel("JonasS", "Schnelle Lieferung und gute Qualität.", 5));
-            comments.add(new KommentarModel("ClaudiaB", "Produkt kam beschädigt an, musste es zurückschicken.", 2));
-            comments.add(new KommentarModel("Mike92", "Alles wie beschrieben, bin zufrieden.", 4));
-            comments.add(new KommentarModel("EllaZ", "Top-Produkt, kann ich nur weiterempfehlen.", 5));
-        }
-
-        public ArrayList<KommentarModel> getComments(){
-            return comments;
-        }
-
+    // Getter und Setter für dokument_typ
     public String getDokument_typ() {
         return dokument_typ;
     }
@@ -79,6 +78,7 @@ public class Dokumentmodel {
         this.dokument_typ = dokument_typ;
     }
 
+    // Getter und Setter für dokument_klasse
     public String getDokument_klasse() {
         return dokument_klasse;
     }
@@ -87,8 +87,12 @@ public class Dokumentmodel {
         this.dokument_klasse = dokument_klasse;
     }
 
-    public boolean getinbesitz(){return inbesitz;}
+    // Getter und Setter für inbesitz
+    public boolean getinbesitz() {
+        return inbesitz;
+    }
 
-    public void setinbesitz(boolean inbesitz){inbesitz=this.inbesitz;}
+    public void setinbesitz(boolean inbesitz) {
+        this.inbesitz = inbesitz;
+    }
 }
-

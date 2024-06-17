@@ -28,7 +28,6 @@ public class interactionsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate das Layout für dieses Fragment
         View view = inflater.inflate(R.layout.fragment_interactions, container, false);
 
         // Initialisiere Buttons

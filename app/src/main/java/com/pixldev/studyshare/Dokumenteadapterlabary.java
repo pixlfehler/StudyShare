@@ -33,7 +33,6 @@ public class Dokumenteadapterlabary extends RecyclerView.Adapter<Dokumenteadapte
     @NonNull
     @Override
     public Dokumenteadapterlabary.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Layout für jedes Item des RecyclerViews aufblähen.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_startseite_recyclerview, parent, false);
         return new ViewHolder(view);
     }

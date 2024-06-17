@@ -25,7 +25,6 @@ public class accountFragment extends Fragment {
     // Erstellt und gibt die View-Hierarchie des Fragments zurück
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Das Layout für das Fragment wird aufgeblasen
         View view1 = LayoutInflater.from(getContext()).inflate(R.layout.fragment_account, null);
 
         // RecyclerView wird aus der Layout-Datei geholt
