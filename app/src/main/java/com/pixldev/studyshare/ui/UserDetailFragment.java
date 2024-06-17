@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.pixldev.studyshare.Dokumenteadapter_tworows;
+import com.pixldev.studyshare.Dokumentadapter_tworows_noneditable;
 import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class UserDetailFragment extends Fragment {
         // Füge weitere Daten zur itemList hinzu, wenn nötig
 
         // Erstelle einen Dokumenteadapter und setze ihn auf den RecyclerView
-        Dokumenteadapter_tworows adapter = new Dokumenteadapter_tworows(getContext(), itemList);
+        Dokumentadapter_tworows_noneditable adapter = new Dokumentadapter_tworows_noneditable(getContext(), itemList);
         recyclerView.setAdapter(adapter);
 
         // Rückgabe des Fragments

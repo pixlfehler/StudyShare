@@ -41,9 +41,9 @@ public class BenachrichtigungenFregment extends Fragment {
 
         // Erstellt und fügt Daten hinzu
         ArrayList<Benachrichtigungsmodel> BenachrichtigungsmodelArrayList = new ArrayList<>();
-        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Kauf", "Fabian kauft dein dokument für "));
-        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Person 2", "Stufe 2"));
-        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Person 3", "Stufe 3"));
+        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Kauf deines Dokuments", "Dein Dokument \"Übungszettel Genetik\" wurde von Fabian gekauft."));
+        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Neuer Kommentar", "Neuer Kommentar zu deinem Dokument \"Übungszettel Genetik\" - User777: Wunderschönes Dokument, hat meine Klausur gecarried."));
+        BenachrichtigungsmodelArrayList.add(new Benachrichtigungsmodel("Vorschlag", "Kennst du Hans aus deiner Stufe?"));
 
         // Setzt Adapter
         Benachrichtigungsadapter Benachrichtigungsadapter = new Benachrichtigungsadapter(getContext(), BenachrichtigungsmodelArrayList);

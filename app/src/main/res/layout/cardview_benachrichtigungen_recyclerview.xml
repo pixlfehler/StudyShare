@@ -9,12 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="5dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            app:cardBackgroundColor="@color/secondary"
             app:cardCornerRadius="35dp">
 
             <ImageView
@@ -22,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_notifications_black_24dp" />
 
@@ -32,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:paddingVertical="5dp"
             android:paddingStart="16dp"
-            android:paddingLeft="16dp"
-            android:paddingVertical="5dp">
+            android:paddingLeft="16dp">
 
             <TextView
                 android:id="@+id/artderbenachrichtigung"
