@@ -34,7 +34,6 @@ public class BenachrichtigungenFregment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Bläst das Layout auf
         View view= inflater.inflate(R.layout.news_interaction_fragment, container, false);
         // Initialisiert RecyclerView
         RecyclerView benachrichtigungenRV = view.findViewById(R.id.BenachrichtigungenRV);

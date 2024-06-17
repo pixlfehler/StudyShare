@@ -36,45 +36,52 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
     @NonNull
     @Override
     public Dokumenteadapter_tworows.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Layout für jedes Item des RecyclerViews aufblähen.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_dokument_tworows_recyclerview, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Dokumenteadapter_tworows.ViewHolder holder, int position) {
-        // Daten an die Views im ViewHolder binden.
         Dokumentmodel model = dokumentModelArrayList.get(position);
         holder.titleDokumentTV.setText(model.getdokument_name());
         holder.dokumentIV.setImageResource(model.getdokument_image());
 
+        // Editieren-Button onClickListener
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showEditDocDialog(model.getdokument_name(),"Lorem ipsum",model.getdokument_fach(),model.getDokument_typ(),model.getDokument_klasse(),"1000");
+                showEditDocDialog(model.getdokument_name(), "Lorem ipsum", model.getdokument_fach(), model.getDokument_typ(), model.getDokument_klasse(), "1000");
             }
         });
 
+        // Item onClickListener
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment newFragment=new detailFragment();
+                // Neues DetailFragment erzeugen
+                Fragment newFragment = new detailFragment();
 
-                Bundle args=new Bundle();
-                args.putString("title",model.getdokument_name());
-                args.putString("fach",model.getdokument_fach());
-                args.putString("typ",model.getDokument_typ());
+                // Argumente für das Fragment setzen
+                Bundle args = new Bundle();
+                args.putString("title", model.getdokument_name());
+                args.putString("fach", model.getdokument_fach());
+                args.putString("typ", model.getDokument_typ());
                 args.putString("stufe", model.getDokument_klasse());
-                args.putInt("image",model.getdokument_image());
-                args.putParcelableArrayList("comments",model.getComments());
+                args.putInt("image", model.getdokument_image());
+                args.putParcelableArrayList("comments", model.getComments());
 
+                // Argumente dem Fragment übergeben
                 newFragment.setArguments(args);
 
-                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                // FragmentManager und FragmentTransaction für die Fragmenttransaktion initialisieren
+                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, newFragment);
-                fragmentTransaction.addToBackStack(null); // optional: um den Fragment-Wechsel rückgängig machen zu können
 
+                // Fragment ersetzen und der BackStack hinzufügen
+                fragmentTransaction.replace(R.id.nav_host_fragment, newFragment);
+                fragmentTransaction.addToBackStack(null); // Optional: um den Fragment-Wechsel rückgängig machen zu können
+
+                // Fragmenttransaktion durchführen
                 fragmentTransaction.commit();
             }
         });
@@ -90,32 +97,35 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView dokumentIV;
         private final TextView titleDokumentTV;
-
         private final Button editButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.thumbnailIV);
             titleDokumentTV = itemView.findViewById(R.id.author_pl);
-            editButton=itemView.findViewById(R.id.editButton);
+            editButton = itemView.findViewById(R.id.editButton);
         }
     }
 
+    // Methode zur Anzeige des Dialogs zur Bearbeitung des Dokuments
+    public void showEditDocDialog(String pDocTitle, String pDocDescription, String pFach, String pTyp, String pStufe, String pPreis) {
+        // Dialog initialisieren
+        Dialog dialog = new Dialog(context);
 
-    public void showEditDocDialog(String pDocTitle, String pDocDescription, String pFach, String pTyp, String pStufe, String pPreis){
-        Dialog dialog= new Dialog(context);
-
+        // Layout des Dialogs setzen
         dialog.setContentView(R.layout.edit_document_dialog);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        Button dismissButton=dialog.findViewById(R.id.dismissButton);
-        EditText titleET=dialog.findViewById(R.id.docTitle);
-        EditText description=dialog.findViewById(R.id.DescriptionET);
-        EditText fach=dialog.findViewById(R.id.stufe);
-        EditText typ=dialog.findViewById(R.id.friendCount);
-        EditText stufe=dialog.findViewById(R.id.docCount);
-        EditText preis=dialog.findViewById(R.id.preis);
+        // Views im Dialog initialisieren
+        Button dismissButton = dialog.findViewById(R.id.dismissButton);
+        EditText titleET = dialog.findViewById(R.id.docTitle);
+        EditText description = dialog.findViewById(R.id.DescriptionET);
+        EditText fach = dialog.findViewById(R.id.stufe);
+        EditText typ = dialog.findViewById(R.id.friendCount);
+        EditText stufe = dialog.findViewById(R.id.docCount);
+        EditText preis = dialog.findViewById(R.id.preis);
 
+        // Textfelder mit den übergebenen Werten füllen
         titleET.setText(pDocTitle);
         description.setText(pDocDescription);
         fach.setText(pFach);
@@ -123,13 +133,16 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         stufe.setText(pStufe);
         preis.setText(pPreis);
 
+        // Dismiss-Button OnClickListener setzen
         dismissButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Dialog schließen
                 dialog.dismiss();
             }
         });
 
+        // Dialog anzeigen
         dialog.show();
     }
 }

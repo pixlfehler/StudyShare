@@ -26,183 +26,148 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import com.pixldev.studyshare.Dokumenteadapter;
-import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.KommentarAdapter;
 import com.pixldev.studyshare.KommentarModel;
 import com.pixldev.studyshare.R;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link detailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class detailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private String web_url = "https://www.bundesamtsozialesicherung.de/fileadmin/media/test__pdfs/Test_PDF.pdf"; // Beispiel URL für den Download
+    private static final String TAG = "detailFragment"; // Tag für Log-Nachrichten
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private String web_url = "https://www.bundesamtsozialesicherung.de/fileadmin/media/test__pdfs/Test_PDF.pdf";
-    private static final String TAG = "detailFragment";
-
-    public ArrayList<KommentarModel> commentArrayList;
+    public ArrayList<KommentarModel> commentArrayList; // Liste der Kommentare
 
     public detailFragment() {
-        // Required empty public constructor
+        // Erforderlicher leerer öffentlicher Konstruktor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment detailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-
+    // Aktivitäts-Result-Launcher zur Verwaltung der Berechtigungsanfrage
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
-                    Log.d(TAG, "Permission granted, starting download");
-                    startDownloading();
+                    Log.d(TAG, "Permission granted, starting download"); // Berechtigung erteilt
+                    startDownloading(); // Download starten
                 } else {
-                    Log.d(TAG, "Permission denied");
-                    Toast.makeText(getContext(), "Permission denied.....", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "Permission denied"); // Berechtigung verweigert
+                    Toast.makeText(getContext(), "Permission denied.....", Toast.LENGTH_SHORT).show(); // Benutzer benachrichtigen
                 }
             });
 
-    public static detailFragment newInstance(String param1, String param2) {
-        detailFragment fragment = new detailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        Button commentButton=view.findViewById(R.id.commentButton);
-        Button kauf_downloadbutton=view.findViewById(R.id.buyButton);
+        // Referenzen zu den UI-Elementen
+        Button commentButton = view.findViewById(R.id.commentButton);
+        Button kauf_downloadbutton = view.findViewById(R.id.buyButton);
 
+        // Initialisierung der Kommentarliste
+        commentArrayList = new ArrayList<>();
 
-        commentArrayList = new ArrayList<KommentarModel>();
+        // TextView-Elemente für Dokumentdetails
+        TextView docTitle = view.findViewById(R.id.DocumentTitle);
+        TextView docFach = view.findViewById(R.id.Fach);
+        TextView docTyp = view.findViewById(R.id.Typ);
+        TextView docStufe = view.findViewById(R.id.Stufe);
 
-        TextView docTitle=view.findViewById(R.id.DocumentTitle);
-        TextView docFach=view.findViewById(R.id.Fach);
-        TextView docTyp=view.findViewById(R.id.Typ);
-        TextView docStufe=view.findViewById(R.id.Stufe);
+        // ImageView für das Dokument-Thumbnail
+        ImageView thumbnailIV = view.findViewById(R.id.thumbnailIV);
 
-        ImageView thumbnailIV=view.findViewById(R.id.thumbnailIV);
+        // Überprüfen, ob Argumente an das Fragment übergeben wurden
+        if (getArguments() != null) {
+            Bundle args = getArguments(); // Argumente abrufen
+            boolean inbesitz = args.getBoolean("inbesitz"); // Besitzstatus des Dokuments
 
-        if(getArguments()!=null) {
-            Bundle args = getArguments();
-            boolean inbesitz = args.getBoolean("inbesitz");
-
+            // Setzen der Dokumentdetails in die TextViews
             docTitle.setText(getArguments().getString("title"));
             docFach.setText(getArguments().getString("fach"));
             docTyp.setText(getArguments().getString("typ"));
             docStufe.setText(getArguments().getString("stufe"));
-
             thumbnailIV.setImageResource(getArguments().getInt("image"));
 
-            commentArrayList=getArguments().getParcelableArrayList("comments");
+            // Kommentare abrufen
+            commentArrayList = getArguments().getParcelableArrayList("comments");
 
+            // Button-Text je nach Besitzstatus ändern
             if (inbesitz) {
-                kauf_downloadbutton.setText("Jetzt Herunterladen");}
-            else
-            {kauf_downloadbutton.setText("Kaufen für"+"Wert Preis");}
+                kauf_downloadbutton.setText("Jetzt Herunterladen");
+            } else {
+                kauf_downloadbutton.setText("Kaufen für" + "Wert Preis");
+            }
+
+            // OnClickListener für den Kauf-/Download-Button
             kauf_downloadbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(inbesitz){
+                    if (inbesitz) {
                         Log.d(TAG, "Download button clicked");
-                        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_DENIED) {
+                        // Überprüfen der Berechtigungen
+                        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                             Log.d(TAG, "Requesting permissions");
+                            // Überprüfen der Android-Version
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
                                 if (!Environment.isExternalStorageManager()) {
+                                    // Öffnen der Einstellungen zur Verwaltung aller Dateien
                                     Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                                     startActivity(intent);
                                 } else {
-                                    startDownloading();
+                                    startDownloading(); // Download starten
                                 }
                             } else {
+                                // Berechtigungsanfrage starten
                                 requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
                             }
                         } else {
                             Log.d(TAG, "Permissions already granted, starting download");
-                            startDownloading();
-                        }}
+                            startDownloading(); // Download starten
+                        }
+                    }
                 }
             });
-
         }
 
-
+        // OnClickListener für den Kommentar-Button
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // BottomSheetDialog für Kommentare anzeigen
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
                 View view1 = LayoutInflater.from(getContext()).inflate(R.layout.comment_bottom_sheet, null);
                 bottomSheetDialog.setContentView(view1);
                 bottomSheetDialog.show();
 
+                // RecyclerView für Kommentare
                 RecyclerView commentRV = view1.findViewById(R.id.commentRV);
 
-                commentArrayList.add(new KommentarModel("pixlfehler","Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll!",1));
-                commentArrayList.add(new KommentarModel("jappez","Super!",4));
-                commentArrayList.add(new KommentarModel("AnonymerNutzer123","yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyo"));
-                commentArrayList.add(new KommentarModel("Bot77","Ich mags!",5));
-                commentArrayList.add(new KommentarModel("Boris Meltzow","Diese Kommentare sind ja so cool!👁️👁️",4));
+                // Beispiel-Kommentare hinzufügen
+                commentArrayList.add(new KommentarModel("pixlfehler", "Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll! Was ist das denn für ein Müll!", 1));
+                commentArrayList.add(new KommentarModel("jappez", "Super!", 4));
+                commentArrayList.add(new KommentarModel("AnonymerNutzer123", "yoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyoyo"));
+                commentArrayList.add(new KommentarModel("Bot77", "Ich mags!", 5));
+                commentArrayList.add(new KommentarModel("Boris Meltzow", "Diese Kommentare sind ja so cool!👁️👁️", 4));
 
-                // we are initializing our adapter class and passing our arraylist to it.
+                // Adapter für Kommentare
                 KommentarAdapter commentAdapter = new KommentarAdapter(getContext(), commentArrayList);
-
-                // below line is for setting a layout manager for our recycler view.
-                // here we are creating vertical list so we will provide orientation as vertical
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 
-                // in below two lines we are setting layoutmanager and adapter to our recycler view.
+                // LayoutManager und Adapter für RecyclerView setzen
                 commentRV.setLayoutManager(linearLayoutManager);
                 commentRV.setAdapter(commentAdapter);
-
             }
         });
 
-
-        return view;
+        return view; // Rückgabe des View
     }
 
-
+    // Methode zum Starten des Downloads
     private void startDownloading() {
-        String url = web_url;
+        String url = web_url; // URL des Downloads
 
+        // Konfiguration der Download-Anfrage
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         request.setTitle("Download");
@@ -212,12 +177,13 @@ public class detailFragment extends Fragment {
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Test_PDF.pdf");
 
+        // DownloadManager für den Download verwenden
         DownloadManager manager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
         if (manager != null) {
             Log.d(TAG, "Enqueue download request");
-            manager.enqueue(request);
+            manager.enqueue(request); // Download-Anfrage in die Warteschlange stellen
         } else {
-            Log.e(TAG, "Download manager is null");
+            Log.e(TAG, "Download manager is null"); // Fehler, falls DownloadManager null ist
         }
     }
 }

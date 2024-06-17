@@ -1,114 +1,69 @@
 package com.pixldev.studyshare.ui;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.pixldev.studyshare.Dokumenteadapter_tworows;
 import com.pixldev.studyshare.Dokumentmodel;
 import com.pixldev.studyshare.R;
-
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class UserDetailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    // Leerer Konstruktor für das Fragment
     public UserDetailFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UserDetailFragment newInstance(String param1, String param2) {
-        UserDetailFragment fragment = new UserDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate das Layout für dieses Fragment
         View view1 = inflater.inflate(R.layout.fragment_user_detail, container, false);
 
-        TextView usernameTV=view1.findViewById(R.id.usernameTV);
-        TextView stufe=view1.findViewById(R.id.stufe);
-        TextView friendCount=view1.findViewById(R.id.friendCount);
+        // Initialisiere TextViews und ImageView für Benutzerinformationen
+        TextView usernameTV = view1.findViewById(R.id.usernameTV);
+        TextView stufe = view1.findViewById(R.id.stufe);
+        TextView friendCount = view1.findViewById(R.id.friendCount);
+        ImageView profilePic = view1.findViewById(R.id.profilePicIV);
 
-        ImageView profilePic=view1.findViewById(R.id.profilePicIV);
-
+        // Initialisiere den RecyclerView
         RecyclerView recyclerView = view1.findViewById(R.id.dokumentRV);
 
-
-        if(getArguments()!=null) {
+        // Überprüfe, ob Argumente vorhanden sind, und setze die entsprechenden Werte
+        if (getArguments() != null) {
             Bundle args = getArguments();
-
-            usernameTV.setText(getArguments().getString("username"));
-            stufe.setText(getArguments().getString("stufe"));
-            friendCount.setText(getArguments().getInt("friendCount")+" Freunde");
-
-            profilePic.setImageResource(getArguments().getInt("profilePic"));
+            usernameTV.setText(args.getString("username"));
+            stufe.setText(args.getString("stufe"));
+            friendCount.setText(args.getInt("friendCount") + " Freunde");
+            profilePic.setImageResource(args.getInt("profilePic"));
         }
 
-
-
+        // Setze den RecyclerView auf eine feste Größe und verwende ein GridLayoutManager mit zwei Spalten
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // Zwei Spalten
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
+        // Erstelle eine Liste von Dokumentmodellen und füge einige Beispiel-Dokumente hinzu
         ArrayList<Dokumentmodel> itemList = new ArrayList<>();
+        itemList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel", "EF", R.drawable.document_placeholder, true));
+        itemList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe", "7", R.drawable.document_placeholder, false));
+        itemList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder, false));
+        itemList.add(new Dokumentmodel("Mathematik Übungsaufgaben", "Mathematik", "Übungsaufgabe", "Q1", R.drawable.document_placeholder, false));
+        itemList.add(new Dokumentmodel("Geschichtsreferat über Mittelalter", "Geschichte", "Referat", "Q2", R.drawable.document_placeholder, false));
+        itemList.add(new Dokumentmodel("Chemie Laborbericht", "Chemie", "Laborbericht", "EF", R.drawable.document_placeholder, false));
+        itemList.add(new Dokumentmodel("Englisch Essay zu Shakespeare", "Englisch", "Essay", "Q1", R.drawable.document_placeholder, false));
+        // Füge weitere Daten zur itemList hinzu, wenn nötig
 
-        itemList.add(new Dokumentmodel("Übungszettel Genetik", "Bio", "Lernzettel","EF", R.drawable.document_placeholder,true));
-        itemList.add(new Dokumentmodel("Eigene Aufgaben zu Lyrik", "Deutsch", "Übungsaufgabe","7", R.drawable.document_placeholder,false));
-        itemList.add(new Dokumentmodel("Vokabeln für Französisch Test", "Französisch", "Lernzettel", "EF", R.drawable.document_placeholder,false));
-        itemList.add(new Dokumentmodel("Mathematik Übungsaufgaben", "Mathematik", "Übungsaufgabe", "Q1", R.drawable.document_placeholder,false));
-        itemList.add(new Dokumentmodel("Geschichtsreferat über Mittelalter", "Geschichte", "Referat", "Q2", R.drawable.document_placeholder,false));
-        itemList.add(new Dokumentmodel("Chemie Laborbericht", "Chemie", "Laborbericht", "EF", R.drawable.document_placeholder,false));
-        itemList.add(new Dokumentmodel("Englisch Essay zu Shakespeare", "Englisch", "Essay", "Q1", R.drawable.document_placeholder,false));
-        // Füge Daten zur itemList hinzu
-
+        // Erstelle einen Dokumenteadapter und setze ihn auf den RecyclerView
         Dokumenteadapter_tworows adapter = new Dokumenteadapter_tworows(getContext(), itemList);
         recyclerView.setAdapter(adapter);
 
+        // Rückgabe des Fragments
         return view1;
     }
 }
