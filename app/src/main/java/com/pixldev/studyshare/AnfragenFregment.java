@@ -26,13 +26,12 @@ public class AnfragenFregment extends Fragment {
         anfragenRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Erstellt eine Liste von Anfragenmodel-Objekten und fügt Dummy-Daten hinzu
-        ArrayList<Anfragenmodel> anfragenModelArrayList = new ArrayList<>();
-        anfragenModelArrayList.add(new Anfragenmodel("Person 1", "Stufe 1", R.drawable.document_placeholder));
-        anfragenModelArrayList.add(new Anfragenmodel("Person 2", "Stufe 2", R.drawable.document_placeholder));
-        anfragenModelArrayList.add(new Anfragenmodel("Person 3", "Stufe 3", R.drawable.document_placeholder));
+        ArrayList<Freundemodel> userModelArrayList = new ArrayList<>();
+        userModelArrayList.add(new Freundemodel("Jasper", "jappez", "7",13, R.drawable.sample_profile_pic));
+        userModelArrayList.add(new Freundemodel("Herbert","Herberti111", "8", 2, R.drawable.sample_profile_pic));
 
         // Erstellt einen Adapter mit der Liste der Anfragenmodel-Objekte
-        Anfragenadapter anfragenAdapter = new Anfragenadapter(getContext(), anfragenModelArrayList);
+        Anfragenadapter anfragenAdapter = new Anfragenadapter(getContext(), userModelArrayList);
 
         // Setzt den Adapter für das RecyclerView
         anfragenRV.setAdapter(anfragenAdapter);

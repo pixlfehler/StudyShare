@@ -15,20 +15,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.pixldev.studyshare.ui.UserDetailFragment;
 import com.pixldev.studyshare.ui.detailFragment;
 import java.util.ArrayList;
 
 public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHolder> {
 
-    // Liste der Anfragenmodel-Objekte und Kontext
-    private final ArrayList<Anfragenmodel> anfragenModelArrayList;
+    // Liste der Freundemodel-Objekte und Kontext
+    private final ArrayList<Freundemodel> FreundemodelArrayList;
     private final Context context;
     private static final String TAG = "Anfragenadapter";
 
     // Konstruktor für den Adapter
-    public Anfragenadapter(Context context, ArrayList<Anfragenmodel> anfragenModelArrayList) {
+    public Anfragenadapter(Context context, ArrayList<Freundemodel> FreundemodelArrayList) {
         this.context = context;
-        this.anfragenModelArrayList = anfragenModelArrayList;
+        this.FreundemodelArrayList = FreundemodelArrayList;
     }
 
     // Erstellt neue ViewHolder-Instanzen
@@ -60,31 +62,35 @@ public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHo
     // Verbindet die Daten mit den ViewHolder-Elementen
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // Holt das aktuelle Anfragenmodel
-        Anfragenmodel model = anfragenModelArrayList.get(position);
+        // Holt das aktuelle Freundemodel
+        Freundemodel model = FreundemodelArrayList.get(position);
 
         // Setzt die Daten in die TextViews und ImageView des ViewHolders
-        holder.nameTV.setText(model.getnameanfarge());
-        holder.stufeTV.setText(model.getstufeanfarge());
-        holder.anfragenThumbnailIV.setImageResource(model.getanfarge_thumbnail());
+        holder.nameTV.setText(model.getname()+" ("+model.getUsername()+")");
+        holder.stufeTV.setText("Stufe: "+model.getstufe());
+        holder.anfragenThumbnailIV.setImageResource(model.getfreunde_thumbnail());
 
         // Setzt OnClickListener für den gesamten ViewHolder, um ein neues Fragment zu laden
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Erstellt ein neues Fragment und ein Bundle für die Argumente
-                Fragment newFragment = new detailFragment();
+                Fragment newFragment = new UserDetailFragment();
+
                 Bundle args = new Bundle();
-                args.putString("name", model.getnameanfarge());
-                args.putString("stufe", model.getstufeanfarge());
-                args.putInt("anfragen_thumbnail", model.getanfarge_thumbnail());
+                args.putString("name", model.getname());
+                args.putString("username", model.getUsername());
+                args.putString("stufe", model.getstufe());
+                args.putInt("friendCount",model.getFriendCount());
+                args.putInt("profilePic", model.getfreunde_thumbnail());
+
                 newFragment.setArguments(args);
 
-                // Holt den FragmentManager und startet eine Transaktion, um das Fragment zu ersetzen
                 FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, newFragment);
                 fragmentTransaction.addToBackStack(null);
+
                 fragmentTransaction.commit();
             }
         });
@@ -93,7 +99,7 @@ public class Anfragenadapter extends RecyclerView.Adapter<Anfragenadapter.ViewHo
     // Gibt die Anzahl der Elemente in der Liste zurück
     @Override
     public int getItemCount() {
-        return anfragenModelArrayList.size();
+        return FreundemodelArrayList.size();
     }
 
     // ViewHolder-Klasse, die die UI-Elemente für jedes RecyclerView-Element hält

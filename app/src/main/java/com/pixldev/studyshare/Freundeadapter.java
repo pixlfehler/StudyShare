@@ -39,7 +39,7 @@ public class Freundeadapter extends RecyclerView.Adapter<Freundeadapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Freundemodel model = freundeModelArrayList.get(position);
         holder.nameTV.setText(model.getname()+" ("+model.getUsername()+")");
-        holder.stufeTV.setText(model.getstufe());
+        holder.stufeTV.setText("Stufe: "+model.getstufe());
         holder.freundeThumbnailIV.setImageResource(model.getfreunde_thumbnail());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

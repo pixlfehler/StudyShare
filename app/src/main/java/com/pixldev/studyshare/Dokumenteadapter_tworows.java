@@ -68,6 +68,7 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
                 args.putString("typ", model.getDokument_typ());
                 args.putString("stufe", model.getDokument_klasse());
                 args.putInt("image", model.getdokument_image());
+                args.putBoolean("blur",false);;
                 args.putParcelableArrayList("comments", model.getComments());
 
                 // Argumente dem Fragment übergeben

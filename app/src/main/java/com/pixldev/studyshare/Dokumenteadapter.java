@@ -1,6 +1,9 @@
 package com.pixldev.studyshare;
 
 import android.content.Context;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +42,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Dokumenteadapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Daten für das aktuelle Dokumentmodell abrufen
         Dokumentmodel model = dokumentModelArrayList.get(position);
 
@@ -49,6 +52,10 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         holder.dokumenttypTV.setText(model.getDokument_typ());
         holder.dokumentstufeTV.setText(model.getDokument_klasse());
         holder.dokumentIV.setImageResource(model.getdokument_image());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            holder.dokumentIV.setRenderEffect(RenderEffect.createBlurEffect(5,5, Shader.TileMode.MIRROR));
+        }
 
         // OnClickListener für das gesamte Item setzen
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +71,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
                 args.putString("typ", model.getDokument_typ());
                 args.putString("stufe", model.getDokument_klasse());
                 args.putInt("image", model.getdokument_image());
+                args.putBoolean("blur",true);;
                 args.putParcelableArrayList("comments", model.getComments());
                 args.putBoolean("inbesitz", model.getinbesitz());
 

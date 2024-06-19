@@ -4,7 +4,10 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -88,6 +91,10 @@ public class detailFragment extends Fragment {
             docTyp.setText(getArguments().getString("typ"));
             docStufe.setText(getArguments().getString("stufe"));
             thumbnailIV.setImageResource(getArguments().getInt("image"));
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && getArguments().getBoolean("blur")) {
+                thumbnailIV.setRenderEffect(RenderEffect.createBlurEffect(10,10, Shader.TileMode.MIRROR));
+            }
 
             // Kommentare abrufen
             commentArrayList = getArguments().getParcelableArrayList("comments");
