@@ -106,11 +106,11 @@
                 android:text="360"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imageView2"
+                app:layout_constraintEnd_toStartOf="@id/coinIV"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/coinIV"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/coinvector" />

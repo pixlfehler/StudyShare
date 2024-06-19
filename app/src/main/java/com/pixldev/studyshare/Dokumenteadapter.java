@@ -53,6 +53,11 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         holder.dokumentstufeTV.setText(model.getDokument_klasse());
         holder.dokumentIV.setImageResource(model.getdokument_image());
 
+        if(model.getinbesitz()){
+            holder.price.setVisibility(View.INVISIBLE);
+            holder.coinIV.setImageResource(R.drawable.baseline_check_circle_outline_24);
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !model.getinbesitz()) {
             holder.dokumentIV.setRenderEffect(RenderEffect.createBlurEffect(5,5, Shader.TileMode.MIRROR));
         }
@@ -110,6 +115,9 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         private final TextView dokumentfachTV;
         private final TextView dokumenttypTV;
         private final TextView dokumentstufeTV;
+        private final TextView price;
+
+        private final ImageView coinIV;
 
         // Konstruktor, der die Views im ViewHolder initialisiert
         public ViewHolder(@NonNull View itemView) {
@@ -119,6 +127,8 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
             dokumentfachTV = itemView.findViewById(R.id.Fach);
             dokumenttypTV = itemView.findViewById(R.id.Typ);
             dokumentstufeTV = itemView.findViewById(R.id.Stufe);
+            coinIV = itemView.findViewById(R.id.coinIV);
+            price = itemView.findViewById(R.id.price);
         }
     }
 }
