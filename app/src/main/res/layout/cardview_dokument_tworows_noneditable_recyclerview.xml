@@ -77,7 +77,7 @@
                     app:cardCornerRadius="15dp">
 
                     <TextView
-                        android:id="@+id/stufe"
+                        android:id="@+id/Fach"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/biology_green"
@@ -101,7 +101,7 @@
                     app:cardCornerRadius="15dp">
 
                     <TextView
-                        android:id="@+id/friendCount"
+                        android:id="@+id/Typ"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/dark_purple"
@@ -132,7 +132,7 @@
                     app:cardCornerRadius="15dp">
 
                     <TextView
-                        android:id="@+id/docCount"
+                        android:id="@+id/Stufe"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/higher_classes_yellow"

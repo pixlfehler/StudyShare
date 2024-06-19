@@ -2,6 +2,9 @@ package com.pixldev.studyshare;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +48,13 @@ public class Dokumentadapter_tworows_noneditable extends RecyclerView.Adapter<Do
         Dokumentmodel model = dokumentModelArrayList.get(position);
         holder.titleDokumentTV.setText(model.getdokument_name());
         holder.dokumentIV.setImageResource(model.getdokument_image());
+        holder.dokumentfachTV.setText(model.getdokument_fach());
+        holder.dokumenttypTV.setText(model.getDokument_typ());
+        holder.dokumentstufeTV.setText(model.getDokument_klasse());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            holder.dokumentIV.setRenderEffect(RenderEffect.createBlurEffect(5,5, Shader.TileMode.MIRROR));
+        }
 
         // Editieren-Button onClickListener
         holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -100,11 +110,19 @@ public class Dokumentadapter_tworows_noneditable extends RecyclerView.Adapter<Do
         private final TextView titleDokumentTV;
         private final Button editButton;
 
+        private final TextView dokumentfachTV;
+        private final TextView dokumenttypTV;
+        private final TextView dokumentstufeTV;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.thumbnailIV);
             titleDokumentTV = itemView.findViewById(R.id.author_pl);
             editButton = itemView.findViewById(R.id.editButton);
+            dokumentfachTV = itemView.findViewById(R.id.Fach);
+            dokumenttypTV = itemView.findViewById(R.id.Typ);
+            dokumentstufeTV = itemView.findViewById(R.id.Stufe);
+
         }
     }
 

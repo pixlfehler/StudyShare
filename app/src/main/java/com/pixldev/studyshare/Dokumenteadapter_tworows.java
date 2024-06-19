@@ -45,6 +45,9 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         Dokumentmodel model = dokumentModelArrayList.get(position);
         holder.titleDokumentTV.setText(model.getdokument_name());
         holder.dokumentIV.setImageResource(model.getdokument_image());
+        holder.dokumentfachTV.setText(model.getdokument_fach());
+        holder.dokumenttypTV.setText(model.getDokument_typ());
+        holder.dokumentstufeTV.setText(model.getDokument_klasse());
 
         // Editieren-Button onClickListener
         holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -100,11 +103,18 @@ public class Dokumenteadapter_tworows extends RecyclerView.Adapter<Dokumenteadap
         private final TextView titleDokumentTV;
         private final Button editButton;
 
+        private final TextView dokumentfachTV;
+        private final TextView dokumenttypTV;
+        private final TextView dokumentstufeTV;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dokumentIV = itemView.findViewById(R.id.thumbnailIV);
             titleDokumentTV = itemView.findViewById(R.id.author_pl);
             editButton = itemView.findViewById(R.id.editButton);
+            dokumentfachTV = itemView.findViewById(R.id.Fach);
+            dokumenttypTV = itemView.findViewById(R.id.Typ);
+            dokumentstufeTV = itemView.findViewById(R.id.Stufe);
         }
     }
 
