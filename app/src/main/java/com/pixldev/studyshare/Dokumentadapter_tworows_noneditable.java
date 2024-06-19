@@ -52,7 +52,7 @@ public class Dokumentadapter_tworows_noneditable extends RecyclerView.Adapter<Do
         holder.dokumenttypTV.setText(model.getDokument_typ());
         holder.dokumentstufeTV.setText(model.getDokument_klasse());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !model.getinbesitz()) {
             holder.dokumentIV.setRenderEffect(RenderEffect.createBlurEffect(5,5, Shader.TileMode.MIRROR));
         }
 
@@ -71,6 +71,9 @@ public class Dokumentadapter_tworows_noneditable extends RecyclerView.Adapter<Do
                 // Neues DetailFragment erzeugen
                 Fragment newFragment = new detailFragment();
 
+                boolean blur=true;
+                if(model.getinbesitz()){blur=false;};
+
                 // Argumente für das Fragment setzen
                 Bundle args = new Bundle();
                 args.putString("title", model.getdokument_name());
@@ -78,7 +81,7 @@ public class Dokumentadapter_tworows_noneditable extends RecyclerView.Adapter<Do
                 args.putString("typ", model.getDokument_typ());
                 args.putString("stufe", model.getDokument_klasse());
                 args.putInt("image", model.getdokument_image());
-                args.putBoolean("blur",true);;
+                args.putBoolean("blur",blur);;
                 args.putParcelableArrayList("comments", model.getComments());
 
                 // Argumente dem Fragment übergeben

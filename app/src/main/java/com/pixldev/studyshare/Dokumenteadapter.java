@@ -53,7 +53,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
         holder.dokumentstufeTV.setText(model.getDokument_klasse());
         holder.dokumentIV.setImageResource(model.getdokument_image());
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !model.getinbesitz()) {
             holder.dokumentIV.setRenderEffect(RenderEffect.createBlurEffect(5,5, Shader.TileMode.MIRROR));
         }
 
@@ -64,6 +64,9 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
                 // Neuen detailFragment erstellen
                 Fragment newFragment = new detailFragment();
 
+                boolean blur=true;
+                if(model.getinbesitz()){blur=false;};
+
                 // Bundle mit Daten für das detailFragment vorbereiten
                 Bundle args = new Bundle();
                 args.putString("title", model.getdokument_name());
@@ -71,7 +74,7 @@ public class Dokumenteadapter extends RecyclerView.Adapter<Dokumenteadapter.View
                 args.putString("typ", model.getDokument_typ());
                 args.putString("stufe", model.getDokument_klasse());
                 args.putInt("image", model.getdokument_image());
-                args.putBoolean("blur",true);;
+                args.putBoolean("blur", blur);;
                 args.putParcelableArrayList("comments", model.getComments());
                 args.putBoolean("inbesitz", model.getinbesitz());
 

@@ -25,7 +25,9 @@ public class FreundeFragment extends Fragment {
 
         ArrayList<Freundemodel> freundemodelArrayList = new ArrayList<>();
         freundemodelArrayList.add(new Freundemodel("Jasper", "jappez", "7",13, R.drawable.sample_profile_pic));
-        freundemodelArrayList.add(new Freundemodel("Herbert","Herberti111", "8", 2, R.drawable.sample_profile_pic));
+        freundemodelArrayList.add(new Freundemodel("Jeanine","ILoveSchool111", "EF", 21, R.drawable.sample_profile_pic2));
+        freundemodelArrayList.add(new Freundemodel("Linus","anbeli", "Q1", 16, R.drawable.sample_profile_pic3));
+        freundemodelArrayList.add(new Freundemodel("Lennox","Master_Lox", "Q1", 14, R.drawable.sample_profile_pic4));
 
         Freundeadapter freundeAdapter = new Freundeadapter(getContext(), freundemodelArrayList);
         freundeRV.setAdapter(freundeAdapter);

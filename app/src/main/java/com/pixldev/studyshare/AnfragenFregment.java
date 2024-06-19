@@ -27,8 +27,10 @@ public class AnfragenFregment extends Fragment {
 
         // Erstellt eine Liste von Anfragenmodel-Objekten und fügt Dummy-Daten hinzu
         ArrayList<Freundemodel> userModelArrayList = new ArrayList<>();
-        userModelArrayList.add(new Freundemodel("Jasper", "jappez", "7",13, R.drawable.sample_profile_pic));
+        userModelArrayList.add(new Freundemodel("Richard", "RichiPitchi", "8",13, R.drawable.sample_profile_pic2));
         userModelArrayList.add(new Freundemodel("Herbert","Herberti111", "8", 2, R.drawable.sample_profile_pic));
+        userModelArrayList.add(new Freundemodel("Emmanuel","Enderbug", "Q1", 2, R.drawable.sample_profile_pic5));
+        userModelArrayList.add(new Freundemodel("Boris Meltzow","MEL77", "Lehrer", 2, R.drawable.sample_profile_pic6));
 
         // Erstellt einen Adapter mit der Liste der Anfragenmodel-Objekte
         Anfragenadapter anfragenAdapter = new Anfragenadapter(getContext(), userModelArrayList);
